@@ -63,6 +63,7 @@ class CategoryController extends Controller
         $category->name = $input['name'];
         $category->display_name = $input['display_name'];
         $category->description = $input['description'] ?: '';
+        
         if ($category->save()) {
             return back()->with('success', '添加成功');
         } else {
@@ -124,6 +125,7 @@ class CategoryController extends Controller
         $category->name = $input['name'];
         $category->display_name = $input['display_name'];
         $category->description = $input['description'] ?: '';
+
         if ($category->save()) {
             return back()->with('success', '更新成功，请刷新页面');
         } else {
@@ -144,7 +146,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * 删除分类
+     * 删除
      * 
      * @return [type] [description]
      */
@@ -159,7 +161,7 @@ class CategoryController extends Controller
             ];
         } else {
             return [
-                'code' => 0,
+                'code' => 1,
                 'msg' => '删除失败，请重试',
                 'data' => '',
                 'url' => ''
