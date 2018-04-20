@@ -36,6 +36,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     // 分类管理
     Route::resource('category', 'CategoryController');
     Route::post('category/delete', 'CategoryController@delete');
+
+    // 回收商
+    Route::resource('recycler', 'RecyclerController');
+    Route::post('recycler/delete', 'RecyclerController@delete');
 });
 
 // 个人测试路由

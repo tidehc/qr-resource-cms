@@ -53,24 +53,37 @@
           @if(Request::is('admin/category*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-bookmark-o"></i><span class="app-menu__label">资源分类管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item
-              @if(Request::is('admin/category'))active @endif" href="{{ url('admin/category') }}"><i class="icon fa fa-list"></i> 分类列表</a></li>
+              @if(Request::is('admin/category'))active @endif" href="{{ url('admin/category') }}">
+              <i class="icon fa fa-list"></i> 分类列表</a></li>
             <li><a class="treeview-item
-              @if(Request::is('admin/category/create'))active @endif" href="{{ url('admin/category/create') }}"><i class="icon fa fa-plus"></i> 添加分类</a></li>
+              @if(Request::is('admin/category/create'))active @endif" href="{{ url('admin/category/create') }}">
+              <i class="icon fa fa-plus"></i> 添加分类</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">物流订单</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-paypal"></i><span class="app-menu__label">订单管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-meanpath"></i> 生产企业</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 订单列表</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-large"></i><span class="app-menu__label">企业厂商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-globe"></i><span class="app-menu__label">物流管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-meanpath"></i> 资源生产企业</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-windows"></i> 销售商</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-rebel"></i> 回收商</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-snapchat-ghost"></i> 交易商</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-safari"></i> 物流商</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-twitter"></i> 拆解企业</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 物流列表</a></li>
+          </ul>
+        </li>
+        <li class="treeview
+          @if(Request::is('admin/recycler*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-large"></i><span class="app-menu__label">回收商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item
+            @if(Request::is('admin/recycler'))active @endif" href="{{ url('admin/recycler') }}">
+            <i class="icon fa fa-list"></i> 回收商列表</a></li>
+            <li><a class="treeview-item
+            @if(Request::is('admin/recycler/create'))active @endif" href="{{ url('admin/recycler/create') }}">
+            <i class="icon fa fa-list"></i> 添加回收商</a></li>
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-truck"></i><span class="app-menu__label">物流商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 物流商列表</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">用户管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -85,14 +98,10 @@
             <li><a class="treeview-item" href="page-user.html"><i class="icon fa fa-list"></i> 权限列表</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">站点设置</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">站点管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-cog"></i> 基本信息</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-history"></i><span class="app-menu__label">站点日志</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle"></i> 管理员日志</a></li>
+            <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-history"></i> 站点日志</a></li>
           </ul>
         </li>
       </ul>
