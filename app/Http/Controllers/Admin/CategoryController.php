@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Validator;
 use App\Category;
 
+/**
+ * 资源类别控制器
+ */
 class CategoryController extends Controller
 {
     /**
