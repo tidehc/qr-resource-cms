@@ -19,7 +19,7 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username', 50)->default('')->comment('用户名')->unique();
-            $table->string('password', 255)->default('')->comment('密码');
+            $table->string('password')->default('')->comment('密码');
             $table->string('phone', 50)->default('')->comment('联系电话');
             $table->string('memo', 50)->default('')->comment('备注');
         });

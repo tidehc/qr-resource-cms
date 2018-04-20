@@ -20,10 +20,9 @@ class CreateLogisticsProvidersTable extends Migration
             $table->increments('id');
             $table->string('name', 50)->default('')->comment('商家名')->unique();
             $table->unsignedDecimal('price', 8, 2)->default('0.00')->comment('价格');
-            $table->string('address', 255)->default('')->comment('详细地址');
+            $table->string('phone', 50)->default('')->comment('电话');
+            $table->string('email')->default('')->comment('电子邮箱');
             $table->string('contact', 50)->default('')->comment('联系人');
-            $table->string('phone', 50)->default('')->comment('联系电话');
-            $table->string('email', 255)->default('')->comment('电子邮箱');
         });
     }
 
