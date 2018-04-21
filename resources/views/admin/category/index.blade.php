@@ -4,7 +4,7 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-plus"></i> 分类列表</h1>
+      <h1><i class="fa fa-list"></i> 分类列表</h1>
       <p>查看本系统的所有资源类别</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
