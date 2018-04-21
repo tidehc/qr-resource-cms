@@ -40,6 +40,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     // 回收商
     Route::resource('recycler', 'RecyclerController');
     Route::post('recycler/delete', 'RecyclerController@delete');
+
+    // 物流商
+    Route::resource('logisticsProvider', 'LogisticsProviderController');
+    Route::post('logisticsProvider/delete', 'LogisticsProviderController@delete');
 });
 
 // 个人测试路由

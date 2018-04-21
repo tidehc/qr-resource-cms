@@ -74,16 +74,21 @@
           @if(Request::is('admin/recycler*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-large"></i><span class="app-menu__label">回收商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item
-            @if(Request::is('admin/recycler'))active @endif" href="{{ url('admin/recycler') }}">
-            <i class="icon fa fa-list"></i> 回收商列表</a></li>
+              @if(Request::is('admin/recycler'))active @endif" href="{{ url('admin/recycler') }}">
+             <i class="icon fa fa-list"></i> 回收商列表</a></li>
             <li><a class="treeview-item
-            @if(Request::is('admin/recycler/create'))active @endif" href="{{ url('admin/recycler/create') }}">
-            <i class="icon fa fa-list"></i> 添加回收商</a></li>
+              @if(Request::is('admin/recycler/create'))active @endif" href="{{ url('admin/recycler/create') }}">
+              <i class="icon fa fa-plus"></i> 添加回收商</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-truck"></i><span class="app-menu__label">物流商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('admin/logisticsProvider*'))is-expanded @endif""><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-truck"></i><span class="app-menu__label">物流商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 物流商列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/logisticsProvider'))active @endif" href="{{ url('admin/logisticsProvider') }}"><i class="icon fa fa-list"></i> 物流商列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/logisticsProvider/create'))active @endif" href="{{ url('admin/logisticsProvider/create') }}">
+              <i class="icon fa fa-plus"></i> 添加物流商</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">用户管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
