@@ -4,7 +4,7 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-plus"></i> 回收商列表</h1>
+      <h1><i class="fa fa-list"></i> 回收商列表</h1>
       <p>查看本系统的所有回收商</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
@@ -26,6 +26,7 @@
               <th>回收价格</th>
               <th>详细地址</th>
               <th>联系人</th>
+              <th>手机号</th>
               <th>电子邮件</th>
               <th>操作</th>
             </tr>
@@ -39,6 +40,7 @@
                 <td>{{ $v->product_price }}</td>
                 <td>{{ $v->address }}</td>
                 <td>{{ $v->contact }}</td>
+                <td>{{ $v->phone }}</td>
                 <td>{{ $v->email }}</td>
                 <td>
                   <div class="btn-group">

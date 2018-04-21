@@ -5,7 +5,7 @@
   <div class="app-title">
     <div>
       <h1><i class="fa fa-plus"></i> 添加回收商</h1>
-      <p>添加一条新的回首商信息</p>
+      <p>添加一条新的回收商信息</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>

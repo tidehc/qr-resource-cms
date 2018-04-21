@@ -62,6 +62,7 @@ class RecyclerController extends Controller
         ], [
             'name.required' => '商家名不能为空',
             'name.max' => '商家名不能超过:max个字符',
+            'name.unique' => '商家名已存在',
             'category_id.required' => '回收分类不能为空',
             'category_id.numeric' => '回收分类ID必须是数字',
             'product_price.required' => '回收价格不能为空',
