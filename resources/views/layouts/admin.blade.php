@@ -91,9 +91,13 @@
               <i class="icon fa fa-plus"></i> 添加物流商</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">用户管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('admin/user*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">用户管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-list"></i> 用户列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/user'))active @endif" href="{{ url('admin/user')}}"><i class="icon fa fa-list"></i> 用户列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/user/create'))active @endif" href="{{ url('admin/user/create')}}"><i class="icon fa fa-plus"></i> 添加用户</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">管理员管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>

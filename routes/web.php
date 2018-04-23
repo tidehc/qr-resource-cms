@@ -44,6 +44,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     // 物流商
     Route::resource('logisticsProvider', 'LogisticsProviderController');
     Route::post('logisticsProvider/delete', 'LogisticsProviderController@delete');
+
+    // 用户
+    Route::resource('user', 'UserController');
+    Route::post('user/delete', 'UserController@delete');
 });
 
 // 个人测试路由
