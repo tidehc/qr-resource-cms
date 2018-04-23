@@ -37,7 +37,7 @@ class AdminSeeder extends Seeder
         $adminRole = new Role;
         $adminRole->name = 'Administrator';
         $adminRole->display_name = '管理员';
-        $adminRole->description = '管理员是项目的总负责人';
+        $adminRole->description = '管理员是站点的总负责人';
         $adminRole->save();
 
         // 管理员绑定管理员角色
@@ -48,7 +48,7 @@ class AdminSeeder extends Seeder
         $allPermissions = new Permission();
         $allPermissions->name = 'AllPermissions';
         $allPermissions->display_name = '所有权限';
-        $allPermissions->description = '代表整个项目的所有操作权限';
+        $allPermissions->description = '代表整个站点的所有操作权限';
         $allPermissions->save();
 
         //　管理员角色绑定“所有权限”
