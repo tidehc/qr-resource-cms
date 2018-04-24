@@ -61,5 +61,6 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'redirectAdmin' => \App\Http\Middleware\RedirectAdmin::class,
+        'redirectIndex' => \App\Http\Middleware\RedirectIndex::class,
     ];
 }

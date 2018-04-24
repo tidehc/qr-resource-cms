@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -51,14 +51,22 @@
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
+                padding: 0 15px;
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
+            .description li{
+                padding-bottom: 8px;
+                list-style: none;
+                line-height: 1.8em;
+                font-size: .95em;
+            }
+            .text-left{
+                text-align: left;
+            }
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -66,28 +74,25 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+            <div class="top-right links">
+                @if(session('user') == null)
+                    <a href="{{ url('index/login') }}">登录</a>
+                @else
+                    <a href="{{ url('index') }}">用户中心</a>
+                    <a href="{{ url('index/logout') }}">退 出</a>
+                @endif
+            </div>
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ config('app.name') }}
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="description">
+                    <ul>
+                        <li class="text-left">- <em>QrCms</em> 是一套结合二维码等物联网技术、面向可再生资源回收的信息管理系统。</li>
+                        <li>- 本系统尚在开发测试阶段，感谢您的体验。</li>
+                        <li class="text-left">- <em>使用过程中如果遇到一些问题亟待解决，请联系我们的管理员</em>。</li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -18,7 +18,8 @@ class CreateResourcesTable extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('production_name', 50)->default('')->comment('物品名称')->index();
+            $table->integer('category_id')->default(0)->comment('所属分类ID');
+            $table->string('product_name', 50)->default('')->comment('物品名称')->index();
             $table->string('menufactoring_number')->default('')->comment('出厂编号')->unique();
             $table->string('number_auth')->default('')->comment('编号授权方');
             $table->string('recycle_number')->default('')->comment('回收编号')->unique();
@@ -29,7 +30,7 @@ class CreateResourcesTable extends Migration
             $table->string('jiao_hui_ren', 50)->default('')->comment('交回人');
             $table->string('recycle_area')->default('')->comment('回收地区');
             $table->string('recycle_company')->default('')->comment('回收企业');
-            $table->integer('recycle_time')->unsigned()->default(0)->comment('回收时间')->index();
+            $table->dateTime('recycle_time')->default('1970-01-01 00:00:00')->comment('回收时间');
         });
     }
 

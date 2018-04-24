@@ -11,8 +11,29 @@
 |
 */
 
+// 首页路由
 Route::get('/', function () {
     return view('welcome');
+});
+
+// 前台登录退出路由
+Route::group(['prefix' => 'index', 'namespace' => 'Index'], function () {
+    Route::get('login', 'LoginController@login')->name('index.login');
+    Route::post('login', 'LoginController@doLogin');
+    Route::get('logout', 'IndexController@logout');
+});
+
+// 前台管理路由
+Route::group(['prefix' => 'index', 'namespace' => 'Index', 'middleware' => 'redirectIndex'], function () {
+
+    // 前台用户中心
+    Route::get('/', 'IndexController@index');
+
+    // 用户信息
+    Route::get('profile', 'UserController@profile');
+    Route::post('updateProfile', 'UserController@updateProfile');
+    Route::post('updatePassword', 'UserController@updatePassword');
+
 });
 
 // 后台登录退出路由
