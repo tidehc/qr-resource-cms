@@ -59,6 +59,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     Route::post('updateProfile', 'AdminController@updateProfile');
     Route::post('updatePassword', 'AdminController@updatePassword');
 
+    // 废弃资源管理
+    Route::resource('resource', 'ResourceController');
+    Route::post('resource/delete', 'ResourceController@delete');
+
     // 分类管理
     Route::resource('category', 'CategoryController');
     Route::post('category/delete', 'CategoryController@delete');

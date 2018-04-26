@@ -44,9 +44,11 @@
       </div>
       <ul class="app-menu">
         <li><a class="app-menu__item" href="{{ url('admin') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">后台首页</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">再生资源管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('admin/resource*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">废弃资源管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 资源列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/resource'))active @endif" href="{{ url('admin/resource') }}"><i class="icon fa fa-list"></i> 资源列表</a></li>
           </ul>
         </li>
         <li class="treeview
