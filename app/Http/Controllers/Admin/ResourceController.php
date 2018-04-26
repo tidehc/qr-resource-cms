@@ -139,7 +139,7 @@ class ResourceController extends Controller
         $resource->menufactoring_number = $input['menufactoring_number'];
         $resource->number_auth = $input['number_auth'];
         $resource->recycle_number = $input['recycle_number'];
-        $resource->toxic = $input['toxic']; // 毒害性，null 和 0 值的测试...
+        $resource->toxic = $input['toxic'];
         $resource->poison_category = $input['poison_category'];
         $resource->weight = $input['weight'];
         $resource->quantity = $input['quantity'];
