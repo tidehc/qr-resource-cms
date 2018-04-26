@@ -71,6 +71,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     Route::resource('tradeRecord', 'TradeRecordController');
     Route::post('tradeRecord/delete', 'TradeRecordController@delete');
 
+    // 物流信息管理
+    Route::resource('logistics', 'LogisticsController');
+    Route::post('logistics/delete', 'LogisticsController@delete');
+
     // 回收商
     Route::resource('recycler', 'RecyclerController');
     Route::post('recycler/delete', 'RecyclerController@delete');

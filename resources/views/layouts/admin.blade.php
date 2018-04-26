@@ -71,9 +71,13 @@
               @if(Request::is('admin/tradeRecord/create'))active @endif" href="{{ url('admin/tradeRecord/create') }}"><i class="icon fa fa-plus"></i> 添加交易记录</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-globe"></i><span class="app-menu__label">物流管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('admin/logistics*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-globe"></i><span class="app-menu__label">物流信息管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 物流列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/logistics'))active @endif" href="{{ url('admin/logistics') }}"><i class="icon fa fa-list"></i> 物流信息列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/logistics/create'))active @endif" href="{{ url('admin/logistics/create') }}"><i class="icon fa fa-plus"></i> 添加物流信息</a></li>
           </ul>
         </li>
         <li class="treeview
