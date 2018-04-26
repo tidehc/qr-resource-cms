@@ -169,6 +169,8 @@ return [
          */
         // Entrust 包的服务提供者
         Zizaco\Entrust\EntrustServiceProvider::class,
+        // laravel-debugar
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +232,8 @@ return [
 
         // Entrust 包的别名
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        // laravel-debugar
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

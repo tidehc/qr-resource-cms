@@ -44,11 +44,15 @@
       </div>
       <ul class="app-menu">
         <li><a class="app-menu__item" href="{{ url('index') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">用户中心</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">再生资源管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('index/resource*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">废弃资源管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 资源列表</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-plus"></i> 表单添加资源</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-qrcode"></i> 扫码录入资源</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/resource'))active @endif" href="{{ url('index/resource') }}"><i class="icon fa fa-list"></i> 所有资源列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/resource/create'))active @endif" href="{{ url('index/resource/create') }}"><i class="icon fa fa-plus"></i> 表单添加资源</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/resource/createByQrcode'))active @endif" href="{{ url('index/resource/createByQrcode') }}"><i class="icon fa fa-qrcode"></i> 扫码添加资源</a></li>
           </ul>
         </li>
       </ul>

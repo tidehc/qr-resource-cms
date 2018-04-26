@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
     public function initUser()
     {
         // 填充 20 个
-        factory(App\User::class, 20)->create();
+        factory(App\User::class, 19)->create();
+        factory(App\User::class)->create(['username' => '测试用户']);
     }
 }

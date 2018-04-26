@@ -34,6 +34,11 @@ Route::group(['prefix' => 'index', 'namespace' => 'Index', 'middleware' => 'redi
     Route::post('updateProfile', 'UserController@updateProfile');
     Route::post('updatePassword', 'UserController@updatePassword');
 
+    // 废弃资源管理
+    Route::get('resource/createByQrcode', 'ResourceController@createByQrcode');
+    Route::resource('resource', 'ResourceController');
+    Route::post('resource/delete', 'ResourceController@delete');
+
 });
 
 // 后台登录退出路由

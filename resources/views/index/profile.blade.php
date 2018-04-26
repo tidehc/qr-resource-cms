@@ -40,43 +40,43 @@
                 <div class="clearfix"></div>
                 <div class="col-md-8 mb-4">
                   <label>用户注册</label>
-                  <input class="form-control" type="text" name="logic" value="{{ $user->logic }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="logic" value="{{ $user->logic }}" placeholder="请输入用户注册信息">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>地址</label>
-                  <input class="form-control" type="text" name="address" value="{{ $user->address }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="address" value="{{ $user->address }}" placeholder="请输入您的地址">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>电子邮箱</label>
-                  <input class="form-control" type="email" name="email" value="{{ $user->email }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="email" name="email" value="{{ $user->email }}" placeholder="请输入有效的电子邮箱">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>手机号</label>
-                  <input class="form-control" type="text" name="phone" value="{{ $user->phone }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="phone" value="{{ $user->phone }}" placeholder="请输入有效的手机号">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>废弃资源原产品生产企业</label>
-                  <input class="form-control" type="text" name="production_enterprise" value="{{ $user->production_enterprise }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="production_enterprise" value="{{ $user->production_enterprise }}" placeholder="请输入废弃资源原产品生产企业">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>销售商</label>
-                  <input class="form-control" type="text" name="seller" value="{{ $user->seller }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="seller" value="{{ $user->seller }}" placeholder="请输入销售商">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>回收商</label>
-                  <input class="form-control" type="text" name="recycler" value="{{ $user->recycler }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="recycler" value="{{ $user->recycler }}" placeholder="请输入回收商">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>交易商</label>
-                  <input class="form-control" type="text" name="trader" value="{{ $user->trader }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="trader" value="{{ $user->trader }}" placeholder="请输入交易商">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>物流商</label>
-                  <input class="form-control" type="text" name="logistics_provider" value="{{ $user->logistics_provider }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="logistics_provider" value="{{ $user->logistics_provider }}" placeholder="请输入物流商">
                 </div>
                 <div class="col-md-8 mb-4">
                   <label>拆解企业</label>
-                  <input class="form-control" type="text" name="dismantling_enterprise" value="{{ $user->dismantling_enterprise }}" placeholder="请输入有效的手机号码">
+                  <input class="form-control" type="text" name="dismantling_enterprise" value="{{ $user->dismantling_enterprise }}" placeholder="请输入拆解企业">
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-8 mb-4">

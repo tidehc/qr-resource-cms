@@ -11,13 +11,13 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $this->initResourceCategory();
+        $this->initCategory();
     }
 
     /**
-     * 初始化资源分类
+     * 初始化分类
      */
-    public function initResourceCategory()
+    public function initCategory()
     {
         DB::table('categorys')->insert([
             [
