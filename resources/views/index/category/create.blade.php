@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.index')
 
 @section('main')
 <main class="app-content">
@@ -14,10 +14,10 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      @include('admin.success')
-      @include('admin.errors')
+      @include('index.success')
+      @include('index.errors')
       <div class="tile">
-        <form action="{{ url('admin/category') }}" method="post">
+        <form action="{{ url('index/category') }}" method="post">
           {{ csrf_field() }}
           <div class="form-group">
             <label for="name">分类名</label>

@@ -55,6 +55,56 @@
               @if(Request::is('index/resource/createByQrcode'))active @endif" href="{{ url('index/resource/createByQrcode') }}"><i class="icon fa fa-qrcode"></i> 扫码添加资源</a></li>
           </ul>
         </li>
+        <li class="treeview
+          @if(Request::is('index/category*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-bookmark-o"></i><span class="app-menu__label">资源分类管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item
+              @if(Request::is('index/category'))active @endif" href="{{ url('index/category') }}">
+              <i class="icon fa fa-list"></i> 分类列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/category/create'))active @endif" href="{{ url('index/category/create') }}">
+              <i class="icon fa fa-plus"></i> 添加分类</a></li>
+          </ul>
+        </li>
+        <li class="treeview
+          @if(Request::is('index/tradeRecord*'))is-expanded @endif""><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-paypal"></i><span class="app-menu__label">交易记录管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item
+              @if(Request::is('index/tradeRecord'))active @endif" href="{{ url('index/tradeRecord') }}"><i class="icon fa fa-list"></i> 交易记录列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/tradeRecord/create'))active @endif" href="{{ url('index/tradeRecord/create') }}"><i class="icon fa fa-plus"></i> 添加交易记录</a></li>
+          </ul>
+        </li>
+        <li class="treeview
+          @if(Request::is('index/logistics*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-globe"></i><span class="app-menu__label">物流信息管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item
+              @if(Request::is('index/logistics'))active @endif" href="{{ url('index/logistics') }}"><i class="icon fa fa-list"></i> 物流信息列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/logistics/create'))active @endif" href="{{ url('index/logistics/create') }}"><i class="icon fa fa-plus"></i> 添加物流信息</a></li>
+          </ul>
+        </li>
+        <li class="treeview
+          @if(Request::is('index/recycler*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-large"></i><span class="app-menu__label">回收商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item
+              @if(Request::is('index/recycler'))active @endif" href="{{ url('index/recycler') }}">
+             <i class="icon fa fa-list"></i> 回收商列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/recycler/create'))active @endif" href="{{ url('index/recycler/create') }}">
+              <i class="icon fa fa-plus"></i> 添加回收商</a></li>
+          </ul>
+        </li>
+        <li class="treeview
+          @if(Request::is('index/logisticsProvider*'))is-expanded @endif""><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-truck"></i><span class="app-menu__label">物流商</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item
+              @if(Request::is('index/logisticsProvider'))active @endif" href="{{ url('index/logisticsProvider') }}"><i class="icon fa fa-list"></i> 物流商列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('index/logisticsProvider/create'))active @endif" href="{{ url('index/logisticsProvider/create') }}">
+              <i class="icon fa fa-plus"></i> 添加物流商</a></li>
+          </ul>
+        </li>
       </ul>
     </aside>
     @yield('main')

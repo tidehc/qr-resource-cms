@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.index')
 
 @section('main')
 <main class="app-content">
@@ -14,14 +14,14 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      @include('admin.success')
-      @include('admin.errors')
+      @include('index.success')
+      @include('index.errors')
       <div class="tile">
         <table class="table table-sm">
           <thead>
             <tr>
               <th>ID</th>
-              <th>交易订单号</th>
+              <th class="order_number">交易订单号</th>
               <th>物品名称</th>
               <th>物品类别</th>
               <th>重量（kg）</th>
@@ -38,7 +38,7 @@
             @foreach($tradeRecords as $v)
               <tr data-id="{{ $v->id }}">
                 <td>{{ $v->id }}</td>
-                <td>{{ $v->order_number }}</td>
+                <td>{{ $v->menufactoring_number }}</td>
                 <td>{{ $v->product_name }}</td>
                 <td>{{ $v->category->display_name }}</td>
                 <td>{{ $v->weight }}</td>
@@ -58,7 +58,6 @@
                   <div class="btn-group">
                     <a class="btn btn-sm btn-success view" href="#"><i class="fa fa-eye"></i></a>
                     <a class="btn btn-sm btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-sm btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
                   </div>
                 </td>
               </tr>
@@ -74,9 +73,8 @@
 
 @section('js')
 <script type="text/javascript">
-var viewUrl = "{{ url('admin/tradeRecord') }}"
-var editUrl = "{{ url('admin/tradeRecord/') }}";
-var deleteUrl = "{{ url('admin/tradeRecord/delete') }}";
+var viewUrl = "{{ url('index/tradeRecord') }}"
+var editUrl = "{{ url('index/tradeRecord/') }}";
 
 $(function () {
   $.ajaxSetup({
@@ -115,32 +113,6 @@ $(function () {
 
   });
 
-  // 删除
-  $('.delete').click(function () {
-    var id = $(this).parents('tr').attr('data-id');
-
-    swal({ 
-      title: '确定删除吗？', 
-      text: '你将无法恢复它！', 
-      type: 'warning',
-      showCancelButton: true, 
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: '确定删除！', 
-    }).then(function(result){
-      if (result.value){
-        $.post(deleteUrl, {id: id}, function (data) {
-          if (!data.code) {
-            swal('删除!', data.msg, 'success');
-            window.location.reload();
-          } else {
-            swal('删除!', data.msg, 'error');
-          }
-        });
-      }
-    })
-
-  });
 })
 </script>
 @endsection

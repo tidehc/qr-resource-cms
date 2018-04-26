@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Index;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,7 +22,7 @@ class LogisticsProviderController extends Controller
     {
         $logisticsProviders = LogisticsProvider::orderBy('id', 'desc')->paginate(10);
 
-        return view('admin.logisticsProvider.index', [
+        return view('index.logisticsProvider.index', [
             'logisticsProviders' => $logisticsProviders
         ]);
     }
@@ -34,7 +34,7 @@ class LogisticsProviderController extends Controller
      */
     public function create()
     {
-        //
+        return view('index.logisticsProvider.create');
     }
 
     /**
@@ -45,7 +45,40 @@ class LogisticsProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->input();
+
+        Validator::make($input, [
+            'name' => ['required', 'max:50', 'unique:logistics_providers,name'],
+            'price' => ['required', 'numeric'],
+            'contact' => ['required', 'max:50'],
+            'phone' => ['required', 'regex:/^1[3|4|5|6|7|8][0-9]{9}$/'],
+            'email' => ['required', 'email'],
+        ], [
+            'name.required' => '商家名不能为空',
+            'name.max' => '商家名不能超过:max个字符',
+            'name.max' => '商家名已存在',
+            'price.unique' => '价格不能为空',
+            'price.numeric' => '价格必须是数字',
+            'contact.required' => '联系人不能为空',
+            'contact.max' => '联系人不能超过:max个字符',
+            'phone.required' => '手机号不能为空',
+            'phone.regex' => '手机号格式不符',
+            'email.required' => '电子邮箱不能为空',
+            'email.email' => '电子邮箱格式不符',
+        ])->validate();
+
+        $logisticsProvider = new LogisticsProvider;
+        $logisticsProvider->name = $input['name'];
+        $logisticsProvider->price = empty($input['price']) ? '0.00' : sprintf("%.2f", $input['price']);
+        $logisticsProvider->contact = empty($input['contact']) ? '' : $input['contact'];
+        $logisticsProvider->phone = empty($input['phone']) ? '' : $input['phone'];
+        $logisticsProvider->email = empty($input['email']) ? '' : $input['email'];
+
+        if ($logisticsProvider->save()) {
+            return back()->with('success', '添加成功');
+        } else {
+            return back()->withErrors('添加失败，请重试');
+        }
     }
 
     /**
@@ -69,7 +102,7 @@ class LogisticsProviderController extends Controller
     {
         $logisticsProvider = LogisticsProvider::where('id', $id)->first();
 
-        return view('admin.logisticsProvider.edit', [
+        return view('index.logisticsProvider.edit', [
             'logisticsProvider' => $logisticsProvider
         ]);
     }

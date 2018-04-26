@@ -39,6 +39,20 @@ Route::group(['prefix' => 'index', 'namespace' => 'Index', 'middleware' => 'redi
     Route::resource('resource', 'ResourceController');
     Route::post('resource/delete', 'ResourceController@delete');
 
+    // 资源分类管理
+    Route::resource('category', 'CategoryController');
+
+    // 交易记录管理
+    Route::resource('tradeRecord', 'TradeRecordController');
+
+    // 物流信息管理
+    Route::resource('logistics', 'LogisticsController');
+
+    // 回收商
+    Route::resource('recycler', 'RecyclerController');
+
+    // 物流商
+    Route::resource('logisticsProvider', 'LogisticsProviderController');
 });
 
 // 后台登录退出路由
@@ -63,7 +77,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     Route::resource('resource', 'ResourceController');
     Route::post('resource/delete', 'ResourceController@delete');
 
-    // 分类管理
+    // 资源分类管理
     Route::resource('category', 'CategoryController');
     Route::post('category/delete', 'CategoryController@delete');
 
@@ -83,7 +97,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     Route::resource('logisticsProvider', 'LogisticsProviderController');
     Route::post('logisticsProvider/delete', 'LogisticsProviderController@delete');
 
-    // 用户
+    // 用户管理
     Route::resource('user', 'UserController');
     Route::post('user/delete', 'UserController@delete');
 });

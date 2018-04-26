@@ -1,44 +1,31 @@
-@extends('layouts.admin')
+@extends('layouts.index')
 
 @section('main')
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-plus"></i> 添加回收商</h1>
-      <p>添加一条新的回收商信息</p>
+      <h1><i class="fa fa-plus"></i> 添加物流商</h1>
+      <p>添加一条新的物流商信息</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item"><a href="javascript:;">添加回收商 </a></li>
+      <li class="breadcrumb-item"><a href="javascript:;">添加物流商 </a></li>
     </ul>
   </div>
   <div class="row">
     <div class="col-md-12">
-      @include('admin.success')
-      @include('admin.errors')
+      @include('index.success')
+      @include('index.errors')
       <div class="tile">
-        <form action="{{ url('admin/recycler') }}" method="post">
+        <form action="{{ url('index/logisticsProvider') }}" method="post">
           {{ csrf_field() }}
           <div class="form-group">
-            <label for="name">回收商名称：</label>
-            <input class="form-control" id="name" name="name" type="text" placeholder="请输入回收商名或企业名" required="">
+            <label for="name">物流商名称：</label>
+            <input class="form-control" id="name" name="name" type="text" placeholder="请输入物流商名或企业名" required="">
           </div>
           <div class="form-group">
-            <label for="category_id">回收分类：</label>
-            <select class="form-control" id="category_id" name="category_id" required="">
-                <option>请选择一个回收的主要类别</option>
-                @foreach($categorys as $v)
-                  <option value="{{ $v->id }}">{{ $v->display_name }}</option>
-                @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="product_price">回收价格：</label>
-            <input class="form-control" id="product_price" name="product_price" type="text" placeholder="请输入回收价格" required="">
-          </div>
-          <div class="form-group">
-            <label for="address">详细地址：</label>
-            <input class="form-control" id="address" name="address" type="text" placeholder="请输入详细地址" required="">
+            <label for="price">价格：</label>
+            <input class="form-control" id="price" name="price" type="text" placeholder="请输入回收价格" required="">
           </div>
           <div class="form-group">
             <label for="contract">联系人：</label>

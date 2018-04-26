@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Index;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,7 +8,7 @@ use Validator;
 use App\Category;
 
 /**
- * 资源类别控制器
+ * 资源分类控制器
  */
 class CategoryController extends Controller
 {
@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
         $categorys = Category::orderBy('id', 'desc')->paginate(10);
 
-        return view('admin.category.index', [
+        return view('index.category.index', [
             'categorys' => $categorys
         ]);
     }
@@ -33,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('index.category.create');
     }
 
     /**
@@ -44,7 +44,31 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->input();
+
+        Validator::make($input, [
+            'name' => ['required', 'max:50', 'unique:categorys,name'],
+            'display_name' => ['required', 'max:50'],
+            'description' => ['nullable', 'max:50'],
+        ], [
+            'name.required' => '分类名不能为空',
+            'name.max' => '分类名不能超过:max个字符',
+            'name.unique' => '分类名已存在',
+            'display_name.required' => '显示名称不能为空',
+            'display_name.max' => '显示名称不能超过:max个字符',
+            'description.max' => '描述不能超过:max个字符'
+        ])->validate();
+
+        $category = new Category;
+        $category->name = $input['name'];
+        $category->display_name = $input['display_name'];
+        $category->description = $input['description'] ?: '';
+        
+        if ($category->save()) {
+            return back()->with('success', '添加成功');
+        } else {
+            return back()->withErrors('添加失败，请重试');
+        }
     }
 
     /**
@@ -68,7 +92,7 @@ class CategoryController extends Controller
     {
         $category = Category::where('id', $id)->first();
 
-        return view('admin.category.edit', [
+        return view('index.category.edit', [
             'category' => $category
         ]);
     }
@@ -119,29 +143,5 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * 删除
-     * 
-     * @return [type] [description]
-     */
-    public function delete(Request $request)
-    {
-        if (Category::destroy($request->id)) {
-            return [
-                'code' => 0,
-                'msg' => '删除成功',
-                'data' => '',
-                'url' => ''
-            ];
-        } else {
-            return [
-                'code' => 1,
-                'msg' => '删除失败，请重试',
-                'data' => '',
-                'url' => ''
-            ];
-        }
     }
 }

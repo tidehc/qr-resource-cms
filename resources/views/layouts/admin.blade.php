@@ -57,9 +57,6 @@
             <li><a class="treeview-item
               @if(Request::is('admin/category'))active @endif" href="{{ url('admin/category') }}">
               <i class="icon fa fa-list"></i> 分类列表</a></li>
-            <li><a class="treeview-item
-              @if(Request::is('admin/category/create'))active @endif" href="{{ url('admin/category/create') }}">
-              <i class="icon fa fa-plus"></i> 添加分类</a></li>
           </ul>
         </li>
         <li class="treeview
@@ -67,8 +64,6 @@
           <ul class="treeview-menu">
             <li><a class="treeview-item
               @if(Request::is('admin/tradeRecord'))active @endif" href="{{ url('admin/tradeRecord') }}"><i class="icon fa fa-list"></i> 交易记录列表</a></li>
-            <li><a class="treeview-item
-              @if(Request::is('admin/tradeRecord/create'))active @endif" href="{{ url('admin/tradeRecord/create') }}"><i class="icon fa fa-plus"></i> 添加交易记录</a></li>
           </ul>
         </li>
         <li class="treeview
@@ -76,8 +71,6 @@
           <ul class="treeview-menu">
             <li><a class="treeview-item
               @if(Request::is('admin/logistics'))active @endif" href="{{ url('admin/logistics') }}"><i class="icon fa fa-list"></i> 物流信息列表</a></li>
-            <li><a class="treeview-item
-              @if(Request::is('admin/logistics/create'))active @endif" href="{{ url('admin/logistics/create') }}"><i class="icon fa fa-plus"></i> 添加物流信息</a></li>
           </ul>
         </li>
         <li class="treeview
@@ -86,9 +79,6 @@
             <li><a class="treeview-item
               @if(Request::is('admin/recycler'))active @endif" href="{{ url('admin/recycler') }}">
              <i class="icon fa fa-list"></i> 回收商列表</a></li>
-            <li><a class="treeview-item
-              @if(Request::is('admin/recycler/create'))active @endif" href="{{ url('admin/recycler/create') }}">
-              <i class="icon fa fa-plus"></i> 添加回收商</a></li>
           </ul>
         </li>
         <li class="treeview
@@ -96,9 +86,6 @@
           <ul class="treeview-menu">
             <li><a class="treeview-item
               @if(Request::is('admin/logisticsProvider'))active @endif" href="{{ url('admin/logisticsProvider') }}"><i class="icon fa fa-list"></i> 物流商列表</a></li>
-            <li><a class="treeview-item
-              @if(Request::is('admin/logisticsProvider/create'))active @endif" href="{{ url('admin/logisticsProvider/create') }}">
-              <i class="icon fa fa-plus"></i> 添加物流商</a></li>
           </ul>
         </li>
         <li class="treeview
