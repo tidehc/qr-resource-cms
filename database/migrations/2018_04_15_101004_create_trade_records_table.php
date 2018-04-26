@@ -25,10 +25,10 @@ class CreateTradeRecordsTable extends Migration
             $table->integer('weight')->unsigned()->default(0)->comment('重量');
             $table->integer('quantity')->unsigned()->default(0)->comment('数量');
             $table->unsignedDecimal('product_price', 8, 2)->default('0.00')->comment('价格');
-            $table->integer('order_time')->unsigned()->default(0)->comment('成交时间');
+            $table->dateTime('order_time')->default('1970-01-01 00:00:00')->comment('成交时间');
             $table->unsignedTinyInteger('toxic')->default(0)->comment('毒害性。默认0，表示无毒害');
-            $table->string('trader_id')->default('')->comment('交易商');
-            $table->string('recycler_id')->default('')->comment('回收商');
+            $table->string('trader')->default('')->comment('交易商');
+            $table->string('recycler')->default('')->comment('回收商');
             $table->string('memo')->default('')->comment('备注');
         });
     }

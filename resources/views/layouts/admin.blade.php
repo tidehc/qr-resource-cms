@@ -62,9 +62,13 @@
               <i class="icon fa fa-plus"></i> 添加分类</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-paypal"></i><span class="app-menu__label">订单管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('admin/tradeRecord*'))is-expanded @endif""><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-paypal"></i><span class="app-menu__label">交易记录管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-list"></i> 订单列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/tradeRecord'))active @endif" href="{{ url('admin/tradeRecord') }}"><i class="icon fa fa-list"></i> 交易记录列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/tradeRecord/create'))active @endif" href="{{ url('admin/tradeRecord/create') }}"><i class="icon fa fa-plus"></i> 添加交易记录</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-globe"></i><span class="app-menu__label">物流管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
