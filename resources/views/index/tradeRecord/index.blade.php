@@ -40,7 +40,7 @@
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->menufactoring_number }}</td>
                 <td>{{ $v->product_name }}</td>
-                <td>{{ $v->category->display_name }}</td>
+                <td>{{ $v->category->display_name or '不存在'}}</td>
                 <td>{{ $v->weight }}</td>
                 <td>{{ $v->quantity }}</td>
                 <td>{{ $v->product_price }}</td>

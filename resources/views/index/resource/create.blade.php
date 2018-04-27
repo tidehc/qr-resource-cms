@@ -23,109 +23,107 @@
       <div class="tile">
         <form action="{{ url('index/resource') }}" method="post">
           {{ csrf_field() }}
-          <table class="table responsive-table">
-            <tbody>
-              <tr>
-                <td width="15%"><span class="text-danger">*</span> 资源类别：</td>
-                <td>
-                  <select class="form-control" id="category_id" name="category_id">
-                    <option>请选择一个资源类别</option>
-                    @foreach($categorys as $v)
-                      <option value="{{ $v->id }}">{{ $v->display_name }}</option>
-                    @endforeach
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 物品名称：</td>
-                <td>
-                  <input class="form-control" id="product_name" name="product_name" type="text" placeholder="请输入物品名称" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 出厂编号：</td>
-                <td>
-                  <input class="form-control" id="menufactoring_number" name="menufactoring_number" type="text" placeholder="请输入出厂编号" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 编号授权方：</td>
-                <td>
-                  <input class="form-control" id="number_auth" name="number_auth" type="text" placeholder="请输入编号授权方" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 回收编号：</td>
-                <td>
-                  <input class="form-control" id="recycle_number" name="recycle_number" type="text" placeholder="请输入回收编号" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 毒害性：</td>
-                <td>
-                  <div class="animated-radio-button">
-                    <label>
-                      <input type="radio" name="toxic" value="0" checked=""><span class="label-text">无毒</span>
-                    </label>
-                    <label>&nbsp;&nbsp;
-                      <input type="radio" name="toxic" value="1"><span class="label-text">有毒</span>
-                    </label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 毒害类别：</td>
-                <td>
-                  <input class="form-control" id="poison_category" name="poison_category" type="text" placeholder="请输入毒害类别" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 重量：</td>
-                <td>
-                  <input class="form-control" id="weight" name="weight" type="text" placeholder="请输入重量（单位：kg）" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 数量：</td>
-                <td>
-                  <input class="form-control" id="quantity" name="quantity" type="text" placeholder="请输入数量" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 交回人：</td>
-                <td>
-                  <input class="form-control" id="jiao_hui_ren" name="jiao_hui_ren" type="text" placeholder="请输入交回人" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 回收地区：</td>
-                <td>
-                  <input class="form-control" id="recycle_area" name="recycle_area" type="text" placeholder="请输入回收地区" required="">
-                </td>
-              </tr>
-              <tr>
-                <td><span class="text-danger">*</span> 回收企业：</td>
-                <td>
-                  <input class="form-control" id="recycle_company" name="recycle_company" type="text" placeholder="请输入回收企业" required="">
-                </td>
-              </tr>
-              <tr>
-                <td>回收时间：</td>
-                <td>
-                  <input class="form-control" type="text" id="recycle_time" name="recycle_time" placeholder="请选择回收时间" required="">
-                </td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>
-                  <div class="form-group">
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认添加</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 资源类别：</label>
+            <div class="col-md-10">
+              <select class="form-control" id="category_id" name="category_id">
+                <option>请选择一个资源类别</option>
+                @foreach($categorys as $v)
+                  <option value="{{ $v->id }}">{{ $v->display_name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 物品名称：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="product_name" name="product_name" type="text" placeholder="请输入物品名称" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 出厂编号：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="menufactoring_number" name="menufactoring_number" type="text" placeholder="请输入出厂编号" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 编号授权方：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="number_auth" name="number_auth" type="text" placeholder="请输入编号授权方" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 回收编号：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="recycle_number" name="recycle_number" type="text" placeholder="请输入回收编号" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 毒害性：</label>
+            <div class="col-md-10">
+              <div class="animated-radio-button">
+                <label>
+                  <input type="radio" name="toxic" value="0" checked=""><span class="label-text">无毒</span>
+                </label>
+                <label>&nbsp;&nbsp;
+                  <input type="radio" name="toxic" value="1"><span class="label-text">有毒</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 毒害类别：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="poison_category" name="poison_category" type="text" placeholder="请输入毒害类别" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 重量：</label>
+            <div class="col-md-10"><input class="form-control" id="weight" name="weight" type="text" placeholder="请输入重量（单位：kg）" required=""></div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 数量：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="quantity" name="quantity" type="text" placeholder="请输入数量" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 交回人：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="jiao_hui_ren" name="jiao_hui_ren" type="text" placeholder="请输入交回人" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 回收地区：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="recycle_area" name="recycle_area" type="text" placeholder="请输入回收地区" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 回收企业：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="recycle_company" name="recycle_company" type="text" placeholder="请输入回收企业" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 回收企业：</label>
+            <div class="col-md-10">
+              <input class="form-control" id="recycle_company" name="recycle_company" type="text" placeholder="请输入回收企业" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 回收时间：</label>
+            <div class="col-md-10">
+              <input class="form-control" type="text" id="recycle_time" name="recycle_time" placeholder="请选择回收时间" required="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认添加</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

@@ -242,28 +242,4 @@ class ResourceController extends Controller
     {
         //
     }
-
-    /**
-     * 删除废弃资源
-     * 
-     * @return [type] [description]
-     */
-    public function delete(Request $request)
-    {
-        if (Resource::destroy($request->id)) {
-            return [
-                'code' => 0,
-                'msg' => '删除成功',
-                'data' => '',
-                'url' => ''
-            ];
-        } else {
-            return [
-                'code' => 1,
-                'msg' => '删除失败，请重试',
-                'data' => '',
-                'url' => ''
-            ];
-        }
-    }
 }

@@ -30,28 +30,30 @@
             <h4 class="line-head">基本信息</h4>
             <form action="{{ url('admin/updateProfile') }}" method="post">
               {{ csrf_field() }}
-              <div class="row">
-                <div class="col-md-8 mb-4">
-                  <label>用户名(不可修改)</label>
+              <div class="form-group row">
+                <label class="control-label col-md-2">用户名：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="text" value="{{ $admin->username }}" readonly>
                 </div>
               </div>
-              <div class="row">
-                <div class="clearfix"></div>
-                <div class="col-md-8 mb-4">
-                  <label>手机号</label>
+              <div class="form-group row">
+                <label class="control-label col-md-2">手机号：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="text" name="phone" value="{{ $admin->phone }}" placeholder="请输入有效的手机号码">
                 </div>
-                <div class="clearfix"></div>
-                <div class="col-md-8 mb-4">
-                  <label>备注</label>
+              </div>
+              <div class="clearfix"></div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">备注：</label>
+                <div class="col-md-10">
                   <textarea class="form-control" name="memo" placeholder="（选填）">{{ $admin->memo }}</textarea>
                 </div>
               </div>
-              <div class="row mb-10">
-                <div class="col-md-12">
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认更新</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
+              <div class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                 <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认更新</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
                 </div>
               </div>
             </form>
@@ -62,24 +64,29 @@
             <h4 class="line-head">登录密码</h4>
             <form action="{{ url('admin/updatePassword') }}" method="post">
               {{ csrf_field() }}
-              <div class="row mb-4">
-                <div class="col-md-8 mb-4">
-                  <label>原密码</label>
-                  <input class="form-control" type="password" name="password_old" value="" placeholder="请输入原密码">
-                </div>
-                <div class="col-md-8 mb-4">
-                  <label>新密码</label>
-                  <input class="form-control" type="password" name="password" value="" placeholder="请输入新密码">
-                </div>
-                <div class="col-md-8 mb-4">
-                  <label>确认密码</label>
-                  <input class="form-control" type="password" name="password_confirmation" value="" placeholder="请确认新密码">
+              <div class="form-group row">
+                <label class="control-label col-md-2"><span class="text-danger">*</span> 原密码：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="password" name="password_old" value="" placeholder="请输入原密码" required="">
                 </div>
               </div>
-              <div class="row mb-10">
-                <div class="col-md-12">
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认修改</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
+              <div class="form-group row">
+                <label class="control-label col-md-2"><span class="text-danger">*</span> 新密码：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="password" name="password" value="" placeholder="请输入新密码" required="">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2"><span class="text-danger">*</span> 确认密码：</label>
+                <div class="col-md-9">
+                  <input class="form-control" type="password" name="password_confirmation" value="" placeholder="请确认新密码" required="">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                 <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认更新</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
                 </div>
               </div>
             </form>

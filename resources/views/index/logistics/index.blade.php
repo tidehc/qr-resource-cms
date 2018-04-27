@@ -40,7 +40,7 @@
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->logistics_number }}</td>
                 <td>{{ $v->product_name }}</td>
-                <td>{{ $v->category->display_name }}</td>
+                <td>{{ $v->category->display_name or '不存在'}}</td>
                 <td>{{ $v->logistics_price }}</td>
                 <td>{{ $v->delivery_date }}</td>
                 <td>{{ $v->arrive_date }}</td>

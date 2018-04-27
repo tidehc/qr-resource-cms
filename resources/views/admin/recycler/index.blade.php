@@ -36,7 +36,7 @@
               <tr data-id="{{ $v->id }}">
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->name }}</td>
-                <td>{{ $v->category->display_name }}</td>
+                <td>{{ $v->category->display_name or '不存在'}}</td>
                 <td>{{ $v->product_price }}</td>
                 <td>{{ $v->address }}</td>
                 <td>{{ $v->contact }}</td>
@@ -88,7 +88,8 @@ $(function () {
 
   // 删除
   $('.delete').click(function () {
-    var id = $(this).parents('tr').attr('data-id');
+    var $this = $(this);
+    var id = $this.parents('tr').attr('data-id');
 
     swal({ 
       title: '确定删除吗？', 
@@ -103,7 +104,7 @@ $(function () {
         $.post(deleteUrl, {id: id}, function (data) {
           if (!data.code) {
             swal('删除!', data.msg, 'success');
-            window.location.reload();
+            $this.parents('tr').remove();
           } else {
             swal('删除!', data.msg, 'error');
           }
