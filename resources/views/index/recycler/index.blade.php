@@ -36,7 +36,7 @@
               <tr data-id="{{ $v->id }}">
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->name }}</td>
-                <td>{{ $v->category->display_name }}</td>
+                <td>{{ $v->category->display_name or '不存在' }}</td>
                 <td>{{ $v->product_price }}</td>
                 <td>{{ $v->address }}</td>
                 <td>{{ $v->contact }}</td>

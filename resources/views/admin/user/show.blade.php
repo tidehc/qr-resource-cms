@@ -7,51 +7,51 @@
       <table class="table responsive-table">
         <tbody>
           <tr>
-            <th>用户名：</th>
+            <td>用户名：</td>
             <td>{{ $user->username }}</td>
           </tr>
           <tr>
-            <th>用户注册：</th>
+            <td>用户注册：</td>
             <td>{{ $user->logic }}</td>
           </tr>
           <tr>
-            <th>地址：</th>
+            <td>地址：</td>
             <td>{{ $user->address }}</td>
           </tr>
           <tr>
-            <th>电子邮箱：</th>
+            <td>电子邮箱：</td>
             <td>{{ $user->email }}</td>
           </tr>
           <tr>
-            <th>手机号：</th>
+            <td>手机号：</td>
             <td>{{ $user->phone }}</td>
           </tr>
           <tr>
-            <th>废弃资源原产品生产企业：</th>
+            <td>废弃资源原产品生产企业：</td>
             <td>{{ $user->production_enterprise }}</td>
           </tr>
           <tr>
-            <th>销售商：</th>
+            <td>销售商：</td>
             <td>{{ $user->seller }}</td>
           </tr>
           <tr>
-            <th>回收商：</th>
+            <td>回收商：</td>
             <td>{{ $user->recycler }}</td>
           </tr>
           <tr>
-            <th>交易商：</th>
+            <td>交易商：</td>
             <td>{{ $user->trader }}</td>
           </tr>
           <tr>
-            <th>物流商：</th>
+            <td>物流商：</td>
             <td>{{ $user->logistics_provider }}</td>
           </tr>
           <tr>
-            <th>拆解企业：</th>
+            <td>拆解企业：</td>
             <td>{{ $user->dismantling_enterprise }}</td>
           </tr>
           <tr>
-            <th>备注</th>
+            <td>备注</td>
             <td>{{ $user->memo }}</td>
           </tr>
         </tbody>

@@ -40,7 +40,7 @@
             @foreach($resources as $v)
               <tr data-id="{{ $v->id }}">
                 <td>{{ $v->id }}</td>
-                <td>{{ $v->category->display_name }}</td>
+                <td>{{ $v->category->display_name or '不存在'}}</td>
                 <td>{{ $v->product_name }}</td>
                 <td>{{ $v->menufactoring_number }}</td>
                 <td>{{ $v->number_auth }}</td>
@@ -64,7 +64,6 @@
                     <a class="btn btn-sm btn-info qrcode" href="#"><i class="fa fa-qrcode"></i></a>
                     <a class="btn btn-sm btn-success view" href="#"><i class="fa fa-eye"></i></a>
                     <a class="btn btn-sm btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-sm btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
                   </div>
                 </td>
               </tr>
@@ -125,32 +124,6 @@ $(function () {
 
   });
 
-  // 删除
-  $('.delete').click(function () {
-    var id = $(this).parents('tr').attr('data-id');
-
-    swal({ 
-      title: '确定删除吗？', 
-      text: '你将无法恢复它！', 
-      type: 'warning',
-      showCancelButton: true, 
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: '确定删除！', 
-    }).then(function(result){
-      if (result.value){
-        $.post(deleteUrl, {id: id}, function (data) {
-          if (!data.code) {
-            swal('删除!', data.msg, 'success');
-            window.location.reload();
-          } else {
-            swal('删除!', data.msg, 'error');
-          }
-        });
-      }
-    })
-
-  });
 })
 </script>
 @endsection

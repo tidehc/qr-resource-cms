@@ -30,64 +30,84 @@
             <h4 class="line-head">基本信息</h4>
             <form action="{{ url('index/updateProfile') }}" method="post">
               {{ csrf_field() }}
-              <div class="row">
-                <div class="col-md-8 mb-4">
-                  <label>用户名(不可修改)</label>
-                  <input class="form-control" type="text" value="{{ $user->username }}" readonly>
+              <div class="form-group row">
+                <label class="control-label col-md-2">用户名：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" value="{{ $user->username }}" readonly="">
                 </div>
               </div>
-              <div class="row">
-                <div class="clearfix"></div>
-                <div class="col-md-8 mb-4">
-                  <label>用户注册</label>
+
+              <div class="form-group row">
+                <label class="control-label col-md-2">用户注册：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="text" name="logic" value="{{ $user->logic }}" placeholder="请输入用户注册信息">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label>地址</label>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">地址：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="text" name="address" value="{{ $user->address }}" placeholder="请输入您的地址">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label>电子邮箱</label>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">电子邮箱：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="email" name="email" value="{{ $user->email }}" placeholder="请输入有效的电子邮箱">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label>手机号</label>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">手机号：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="text" name="phone" value="{{ $user->phone }}" placeholder="请输入有效的手机号">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label>废弃资源原产品生产企业</label>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">废弃资源原产品生产企业：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="text" name="production_enterprise" value="{{ $user->production_enterprise }}" placeholder="请输入废弃资源原产品生产企业">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label>销售商</label>
-                  <input class="form-control" type="text" name="seller" value="{{ $user->seller }}" placeholder="请输入销售商">
-                </div>
-                <div class="col-md-8 mb-4">
-                  <label>回收商</label>
-                  <input class="form-control" type="text" name="recycler" value="{{ $user->recycler }}" placeholder="请输入回收商">
-                </div>
-                <div class="col-md-8 mb-4">
-                  <label>交易商</label>
-                  <input class="form-control" type="text" name="trader" value="{{ $user->trader }}" placeholder="请输入交易商">
-                </div>
-                <div class="col-md-8 mb-4">
-                  <label>物流商</label>
-                  <input class="form-control" type="text" name="logistics_provider" value="{{ $user->logistics_provider }}" placeholder="请输入物流商">
-                </div>
-                <div class="col-md-8 mb-4">
-                  <label>拆解企业</label>
-                  <input class="form-control" type="text" name="dismantling_enterprise" value="{{ $user->dismantling_enterprise }}" placeholder="请输入拆解企业">
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-md-8 mb-4">
-                  <label>备注</label>
-                  <textarea class="form-control" name="memo" placeholder="（选填）">{{ $user->memo }}</textarea>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">销售商：</label>
+                <div class="col-md-10">
+                 <input class="form-control" type="text" name="seller" value="{{ $user->seller }}" placeholder="请输入销售商">
                 </div>
               </div>
-              <div class="row mb-10">
-                <div class="col-md-12">
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认更新</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
+              <div class="form-group row">
+                <label class="control-label col-md-2">回收商：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" name="recycler" value="{{ $user->recycler }}" placeholder="请输入回收商">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">交易商：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" name="trader" value="{{ $user->trader }}" placeholder="请输入交易商">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">物流商：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" name="logistics_provider" value="{{ $user->logistics_provider }}" placeholder="请输入物流商">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">拆解企业：</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" name="dismantling_enterprise" value="{{ $user->dismantling_enterprise }}" placeholder="请输入拆解企业">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2">备注：</label>
+                <div class="col-md-10">
+                 <textarea class="form-control" name="memo" placeholder="（选填）">{{ $user->memo }}</textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                 <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认更新</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
                 </div>
               </div>
             </form>
@@ -98,24 +118,30 @@
             <h4 class="line-head">登录密码</h4>
             <form action="{{ url('index/updatePassword') }}" method="post">
               {{ csrf_field() }}
-              <div class="row mb-4">
-                <div class="col-md-8 mb-4">
-                  <label><span class="text-danger">*</span> 原密码</label>
+              <div class="form-group row">
+                <label class="control-label col-md-2"><span class="text-danger">*</span> 原密码：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="password" name="password_old" value="" placeholder="请输入原密码">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label><span class="text-danger">*</span> 新密码</label>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2"><span class="text-danger">*</span> 新密码：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="password" name="password" value="" placeholder="请输入新密码">
                 </div>
-                <div class="col-md-8 mb-4">
-                  <label><span class="text-danger">*</span> 确认密码</label>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-2"><span class="text-danger">*</span> 确认密码：</label>
+                <div class="col-md-10">
                   <input class="form-control" type="password" name="password_confirmation" value="" placeholder="请确认新密码">
                 </div>
               </div>
-              <div class="row mb-10">
-                <div class="col-md-12">
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认修改</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                 <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认更新</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
                 </div>
               </div>
             </form>
