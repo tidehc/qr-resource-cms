@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\TradeRecords::class, function (Faker $faker) {
+$factory->define(App\TradeRecord::class, function (Faker $faker) {
     $faker = \Faker\Factory::create('zh_CN'); // 汉化
 
     return [

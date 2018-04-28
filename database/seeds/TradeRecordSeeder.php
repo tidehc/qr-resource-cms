@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TradeRecordsSeeder extends Seeder
+class TradeRecordSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,14 +11,14 @@ class TradeRecordsSeeder extends Seeder
      */
     public function run()
     {
-        $this->initTradeRecords();
+        $this->initTradeRecord();
     }
 
     /**
      * 初始化交易记录
      */
-    public function initTradeRecords()
+    public function initTradeRecord()
     {
-        factory(App\TradeRecords::class, 20)->create();
+        factory(App\TradeRecord::class, 12)->create();
     }
 }

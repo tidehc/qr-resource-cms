@@ -19,7 +19,7 @@
         <h3 class="tile-title">系统环境</h3>
         <table class="table">
           <tr>
-            <td>服务器：</td>
+            <td width="23%">服务器：</td>
             <td>{{ $_SERVER['SERVER_SOFTWARE'] }}</td>
           </tr>
           <tr>
@@ -57,16 +57,17 @@
     <div class="col-md-4">
       <div class="tile">
         <h3 class="tile-title">欢迎您</h3>
-        <p>
-          本系统 <em>({{ config('app.name') }})</em> 旨在解决当下可再生资源回收的效率偏低问题，通过物联网技术，提供一套现代化的可再生资源回收信息管理系统。
-        </p>
-        <p>
-          系统采用 <em>LAMP</em> 环境搭建，用著名的 <em>PHP</em> 开发框架 <em>Laravel</em> 设计完成。
-          尚在开发阶段，感谢您的初次体验。
-        </p>
-        <p>
-          <em>如果遇到某些问题亟待解决，请联系我们的管理员。<i class="icon fa fa-hand-o-left fa-2x"></i></em>
-        </p>
+        <ul class="list-unstyled">
+          <li>
+            <p>- <em>{{ config('app.name') }}</em> 是结合二维码等物联网技术、面向可再生资源回收的信息管理系统。</p>
+          </li>
+          <li>
+            <p>- 本系统旨在解决当下可再生资源回收的效率偏低问题，通过计算机、物联网技术，提供一套新型的可再生资源回收的解决方案。</p>
+          </li>
+          <li>
+            <p>- <em>在使用过程中，如果您遇到某些问题亟待解决，请联系我们的管理员。<i class="icon fa fa-hand-o-left fa-2x"></i></em></p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

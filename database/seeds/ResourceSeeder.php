@@ -20,6 +20,6 @@ class ResourceSeeder extends Seeder
      */
     public function initResource()
     {
-        factory(App\Resource::class, 20)->create();
+        factory(App\Resource::class, 12)->create();
     }
 }

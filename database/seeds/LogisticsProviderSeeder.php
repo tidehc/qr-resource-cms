@@ -19,7 +19,6 @@ class LogisticsProviderSeeder extends Seeder
      */
     public function initLogisticsProvider()
     {
-        // 填充 20 个
-        factory(App\LogisticsProvider::class, 20)->create();
+        factory(App\LogisticsProvider::class, 12)->create();
     }
 }

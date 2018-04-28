@@ -19,6 +19,6 @@ class LogisticsSeeder extends Seeder
      */
     public function initLogistics()
     {
-        factory(App\Logistics::class, 20)->create();
+        factory(App\Logistics::class, 12)->create();
     }
 }

@@ -19,7 +19,6 @@ class RecyclerSeeder extends Seeder
      */
     public function initRecycler()
     {
-        // 填充 20 个
-        factory(App\Recycler::class, 20)->create();
+        factory(App\Recycler::class, 12)->create();
     }
 }
