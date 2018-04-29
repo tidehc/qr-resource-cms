@@ -97,19 +97,23 @@
               @if(Request::is('admin/user/create'))active @endif" href="{{ url('admin/user/create')}}"><i class="icon fa fa-plus"></i> 添加用户</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">管理员管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview
+          @if(Request::is('admin/entrust*'))is-expanded @endif"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">管理员管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-list"></i> 管理员列表</a></li>
-            <li><a class="treeview-item" href="page-lockscreen.html"><i class="icon fa fa-list"></i> 角色列表</a></li>
-            <li><a class="treeview-item" href="page-user.html"><i class="icon fa fa-list"></i> 权限列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/entrust/admin'))active @endif" href="{{ url('admin/entrust/admin') }}"><i class="icon fa fa-list"></i> 管理员列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/entrust/role'))active @endif" href="{{ url('admin/entrust/role') }}"><i class="icon fa fa-list"></i> 角色列表</a></li>
+            <li><a class="treeview-item
+              @if(Request::is('admin/entrust/permission'))active @endif" href="{{ url('admin/entrust/permission') }}"><i class="icon fa fa-list"></i> 权限列表</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">站点管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <!-- <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">站点管理</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-cog"></i> 基本信息</a></li>
             <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-history"></i> 站点日志</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </aside>
     @yield('main')

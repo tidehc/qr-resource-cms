@@ -99,6 +99,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'redi
     // 用户管理
     Route::resource('user', 'UserController');
     Route::post('user/delete', 'UserController@delete');
+
+    // 管理员管理
+    Route::resource('entrust/admin', 'AdminController');
+    Route::post('entrust/admin/delete', 'AdminController@delete');
+
+    // 角色管理
+    Route::resource('entrust/role', 'RoleController');
+    Route::post('entrust/role/delete', 'RoleController@delete');
+
+    // 权限管理
+    Route::resource('entrust/permission', 'PermissionController');
+    Route::post('entrust/permission/delete', 'PermissionController@delete');
 });
 
 // 个人测试路由

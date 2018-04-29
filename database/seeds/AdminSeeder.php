@@ -110,6 +110,13 @@ class AdminSeeder extends Seeder
         $zhuwen = Admin::where('username', '竺文')->first();
         $editor = Role::where('name', 'editor')->first();
         $zhuwen->attachRole($editor);
+
+        // 权限绑定
+        $permissions = Permission::where('name', 'not like', 'entrust-%') // 去除权限系统相关权限
+                                 ->where('name', 'not like', 'user-%')    // 去除用户相关权限
+                                 ->where('name', 'not like', '%-delete')  // 去除所有删除权限
+                                 ->pluck('id');
+        $editor->attachPermissions($permissions);
     }
 
     /**
