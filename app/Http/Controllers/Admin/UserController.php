@@ -145,8 +145,6 @@ class UserController extends Controller
         $input = $request->input();
         
         Validator::make($input, [
-            'username' => ['required', 'max:50'],
-            'password' => ['required', 'max:255', 'confirmed'],
             'logic' => ['nullable', 'max:50'],
             'address' => ['nullable', 'max:255'],
             'email' => ['nullable', 'email'],
@@ -159,11 +157,6 @@ class UserController extends Controller
             'dismantling_enterprise' => ['nullable', 'max:255'],
             'memo' => ['nullable', 'max:255'],
         ], [
-            'username.required' => '用户名不能为空',
-            'username.max' => '用户名不能超过:max个字符',
-            'password.required' => '密码不能为空',
-            'password.max' => '密码不能超过:max个字符',
-            'password.confirmed' => '两次密码不一致',
             'logic.max' => '用户注册不能超过:max个字符',
             'address.max' => '地址不能超过:max个字符',
             'email.email' => '电子邮箱格式不符',
@@ -179,7 +172,6 @@ class UserController extends Controller
 
         $user = user::find($id);
         $user->username = $input['username'];
-        $user->password = bcrypt($input['password']);
         $user->logic = empty($input['logic']) ? '' : $input['logic'];
         $user->address = empty($input['address']) ? '' : $input['address'];
         $user->email = empty($input['email']) ? '' : $input['email'];

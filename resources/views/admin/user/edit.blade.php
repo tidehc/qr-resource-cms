@@ -10,22 +10,8 @@
           {{ csrf_field() }}
           {{ method_field('put')}}
           <div class="form-group row">
-            <label class="control-label col-md-2" for="username"><span class="text-danger">*</span> 用户名：</label>
-            <div class="col-md-10">
-              <input class="form-control" id="username" name="username" value="{{ $user->username }}" type="text" placeholder="请输入用户名" required="">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="control-label col-md-2" for="password"><span class="text-danger">*</span> 密码：</label>
-            <div class="col-md-10">
-              <input class="form-control" id="password" name="password" value="{{ $user->password }}" type="password" placeholder="请输入密码" required="">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="control-label col-md-2" for="password_confirmation"><span class="text-danger">*</span> 确认密码：</label>
-            <div class="col-md-10">
-              <input class="form-control" id="password_confirmation" name="password_confirmation" value="{{ $user->password }}" type="password" placeholder="请输入密码" required="">
-            </div>
+            <label class="control-label col-md-2" for="username">用户名：</label>
+            <div class="col-md-10">{{ $user->username }}</div>
           </div>
           <div class="form-group row">
             <label class="control-label col-md-2" for="logic">用户注册：</label>
