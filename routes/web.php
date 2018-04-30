@@ -72,48 +72,46 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['red
     Route::post('updateProfile', 'AdminController@updateProfile');
     Route::post('updatePassword', 'AdminController@updatePassword');
     
-    // Route::group(['middleware' => ['entrustRbac']], function () {
-        // 废弃资源管理
-        Route::resource('resource', 'ResourceController');
-        Route::post('resource/delete', 'ResourceController@delete');
+    // 废弃资源管理
+    Route::resource('resource', 'ResourceController');
+    Route::post('resource/delete', 'ResourceController@delete');
 
-        // 资源分类管理
-        Route::resource('category', 'CategoryController');
-        Route::post('category/delete', 'CategoryController@delete');
+    // 资源分类管理
+    Route::resource('category', 'CategoryController');
+    Route::post('category/delete', 'CategoryController@delete');
 
-        // 交易记录管理
-        Route::resource('tradeRecord', 'TradeRecordController');
-        Route::post('tradeRecord/delete', 'TradeRecordController@delete');
+    // 交易记录管理
+    Route::resource('tradeRecord', 'TradeRecordController');
+    Route::post('tradeRecord/delete', 'TradeRecordController@delete');
 
-        // 物流信息管理
-        Route::resource('logistics', 'LogisticsController');
-        Route::post('logistics/delete', 'LogisticsController@delete');
+    // 物流信息管理
+    Route::resource('logistics', 'LogisticsController');
+    Route::post('logistics/delete', 'LogisticsController@delete');
 
-        // 回收商
-        Route::resource('recycler', 'RecyclerController');
-        Route::post('recycler/delete', 'RecyclerController@delete');
+    // 回收商
+    Route::resource('recycler', 'RecyclerController');
+    Route::post('recycler/delete', 'RecyclerController@delete');
 
-        // 物流商
-        Route::resource('logisticsProvider', 'LogisticsProviderController');
-        Route::post('logisticsProvider/delete', 'LogisticsProviderController@delete');
+    // 物流商
+    Route::resource('logisticsProvider', 'LogisticsProviderController');
+    Route::post('logisticsProvider/delete', 'LogisticsProviderController@delete');
 
-        // 用户管理
-        Route::resource('user', 'UserController');
-        Route::post('user/delete', 'UserController@delete');
+    // 用户管理
+    Route::resource('user', 'UserController');
+    Route::post('user/delete', 'UserController@delete');
 
-        // 管理员管理(rbac权限系统)
-        // 管理员
-        Route::resource('entrust/admin', 'AdminController');
-        Route::post('entrust/admin/delete', 'AdminController@delete');
+    // 管理员管理(rbac权限系统)
+    // 管理员
+    Route::resource('entrust/admin', 'AdminController');
+    Route::post('entrust/admin/delete', 'AdminController@delete');
 
-        // 角色
-        Route::resource('entrust/role', 'RoleController');
-        Route::post('entrust/role/delete', 'RoleController@delete');
+    // 角色
+    Route::resource('entrust/role', 'RoleController');
+    Route::post('entrust/role/delete', 'RoleController@delete');
 
-        // 权限
-        Route::resource('entrust/permission', 'PermissionController');
-        Route::post('entrust/permission/delete', 'PermissionController@delete');
-    // });
+    // 权限
+    Route::resource('entrust/permission', 'PermissionController');
+    Route::post('entrust/permission/delete', 'PermissionController@delete');
 });
 
 // 个人测试路由
