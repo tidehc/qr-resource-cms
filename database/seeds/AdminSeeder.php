@@ -29,6 +29,7 @@ class AdminSeeder extends Seeder
         // 初始化管理员
         DB::table('admins')->insert([
             ['username' => 'admin', 'password' => bcrypt('admin')],
+            ['username' => '王雅',   'password' => bcrypt('wangya')],
             ['username' => '竺文',   'password' => bcrypt('zhuwen')],
         ]);
 
@@ -36,6 +37,7 @@ class AdminSeeder extends Seeder
         DB::table('roles')->insert([
             ['name' => 'admin',  'display_name' => '管理员',  'description' => '网站的总负责人'],
             ['name' => 'editor', 'display_name' => '网站编辑', 'descritpion' => '主要做网站的维护工作'],
+            ['name' => 'manage-group', 'display_name' => '管理组', 'descritpion' => '负责网站和用户的数据审核'],
         ]);
 
         // 初始化权限
@@ -107,9 +109,13 @@ class AdminSeeder extends Seeder
         $adminRole = Role::where('name', 'admin')->first();
         $admin->attachRole($adminRole);
 
-        $zhuwen = Admin::where('username', '竺文')->first();
+        $wangya = Admin::where('username', '王雅')->first();
         $editor = Role::where('name', 'editor')->first();
-        $zhuwen->attachRole($editor);
+        $wangya->attachRole($editor);
+
+        $zhuwen = Admin::where('username', '竺文')->first();
+        $manageGroup = Role::where('name', 'manage-group')->first();
+        $zhuwen->attachRole($manageGroup);
 
         // 权限绑定
         $permissions = Permission::where('name', 'not like', 'entrust-%') // 去除权限系统相关权限
@@ -117,6 +123,10 @@ class AdminSeeder extends Seeder
                                  ->where('name', 'not like', '%-delete')  // 去除所有删除权限
                                  ->pluck('id');
         $editor->attachPermissions($permissions);
+
+        $permissions = Permission::where('name', 'not like', 'entrust-%') // 去除权限系统相关权限
+                                 ->pluck('id');
+        $manageGroup->attachPermissions($permissions);
     }
 
     /**
