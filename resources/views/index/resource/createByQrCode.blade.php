@@ -17,20 +17,21 @@
       @include('index.success')
       @include('index.errors')
       <div class="tile">
-        <form action="{{ url('index/resource/storeByQrcode') }}" method="post">
+        <form id="form-resource-create" action="{{ url('index/resource/storeByQrcode') }}" method="post">
           {{ csrf_field() }}
           <div class="alert alert-dismissible alert-warning">
-            <p>请使用 <strong>扫码枪</strong> 等扫码设备，扫描二维码获取资源数据。以下方框内的数据请勿手动编辑！</p>
+            <h4><i class="fa fa-exclamation" aria-hidden="true"></i> 使用方法：</h4>
+            <p>请保持光标留在下面的文本框内，然后使用 <strong>扫码枪</strong> 等设备扫描二维码，即可提交数据。<em>请勿手动编辑下面方框里的数据！</em></p>
           </div>
           <div class="form-group row">
-            <label class="control-label col-md-3"><span class="text-danger">*</span> 扫描到的二维码数据：</label>
-            <div class="col-md-9">
-               <textarea class="form-control" name="qrcode-data" id="qrcode-data" cols="60" rows="10" placeholder="请勿手动编辑这些内容"></textarea>
+            <label class="control-label col-md-2"><span class="text-danger">*</span> 扫描到的数据：</label>
+            <div class="col-md-10">
+               <textarea class="form-control" name="qrcode-data" id="qrcode-data" cols="60" rows="10" placeholder="保持光标留在这里，请勿手动编辑" required="" autofocus=""></textarea>
             </div>
           </div>
           <div class="form-group row">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
               <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> 确认添加</button>&nbsp;&nbsp;&nbsp;&nbsp;
               <button class="btn btn-secondary" type="reset"><i class="fa fa-fw fa-lg fa-repeat"></i> 重 置</button>
             </div>
@@ -44,6 +45,9 @@
 
 @section('js')
 <script type="text/javascript">
-
+  $('#qrcode-data').keyup(function () {
+    // let data = $(this).val();
+    // alert(data);
+  });
 </script>
 @endsection
