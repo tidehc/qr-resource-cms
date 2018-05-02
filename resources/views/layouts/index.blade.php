@@ -52,7 +52,7 @@
             <li><a class="treeview-item
               @if(Request::is('index/resource/create'))active @endif" href="{{ url('index/resource/create') }}"><i class="icon fa fa-plus"></i> 表单添加资源</a></li>
             <li><a class="treeview-item
-              @if(Request::is('index/resource/createByQrcode'))active @endif" href="{{ url('index/resource/createByQrcode') }}"><i class="icon fa fa-qrcode"></i> 扫码添加资源</a></li>
+              @if(Request::is('index/resource/createByQrCode'))active @endif" href="{{ url('index/resource/createByQrCode') }}"><i class="icon fa fa-qrcode"></i> 扫码添加资源</a></li>
           </ul>
         </li>
         <li class="treeview

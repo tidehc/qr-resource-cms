@@ -35,7 +35,9 @@ Route::group(['prefix' => 'index', 'namespace' => 'Index', 'middleware' => 'redi
     Route::post('updatePassword', 'UserController@updatePassword');
 
     // 废弃资源管理
-    Route::get('resource/createByQrcode', 'ResourceController@createByQrcode');
+    Route::get('resource/createByQrCode', 'ResourceController@createByQrCode');
+    Route::get('resource/showQrCode/{id}', 'ResourceController@showQrCode');
+    Route::get('resource/qrCode/{id}', 'ResourceController@qrCode');
     Route::resource('resource', 'ResourceController');
 
     // 资源分类管理
@@ -73,6 +75,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['red
     Route::post('updatePassword', 'AdminController@updatePassword');
     
     // 废弃资源管理
+    Route::get('resource/createByQrCode', 'ResourceController@createByQrCode');
+    Route::get('resource/showQrCode/{id}', 'ResourceController@showQrCode');
+    Route::get('resource/qrCode/{id}', 'ResourceController@qrCode');
     Route::resource('resource', 'ResourceController');
     Route::post('resource/delete', 'ResourceController@delete');
 
