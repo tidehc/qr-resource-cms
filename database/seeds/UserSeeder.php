@@ -20,6 +20,9 @@ class UserSeeder extends Seeder
     public function initUser()
     {
         factory(App\User::class, 11)->create();
-        factory(App\User::class)->create(['username' => '测试用户']);
+        factory(App\User::class)->create([
+            'username' => '谢伦宇',
+            'password' => bcrypt('xielunyu')
+        ]);
     }
 }
