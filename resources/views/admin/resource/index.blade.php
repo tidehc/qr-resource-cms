@@ -61,7 +61,7 @@
                 <td>{{ $v->recycle_time }}</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn btn-sm btn-info qrcode" href="#"><i class="fa fa-qrcode"></i></a>
+                    <a class="btn btn-sm btn-info viewQrCode" href="#"><i class="fa fa-qrcode"></i></a>
                     <a class="btn btn-sm btn-success view" href="#"><i class="fa fa-eye"></i></a>
                     <a class="btn btn-sm btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
                     <a class="btn btn-sm btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
@@ -80,6 +80,7 @@
 
 @section('js')
 <script type="text/javascript">
+var viewQrCodeUrl = "{{ url('admin/resource/showQrCode') }}";
 var viewUrl = "{{ url('admin/resource') }}"
 var editUrl = "{{ url('admin/resource') }}";
 var deleteUrl = "{{ url('admin/resource/delete') }}";
@@ -91,9 +92,20 @@ $(function () {
     }
   });
   
+  // 查看二维码
+  $('.viewQrCode').click(function () {
+    var id = $(this).parents('tr').attr('data-id');
 
-  // 获取二维码
-  
+    layer.open({
+      type: 2,
+      title: '查看资源二维码',
+      maxmin: true,
+      shadeClose: true, //点击遮罩关闭层
+      area : ['380px' , '480px'],
+      content: viewQrCodeUrl + '/' + id
+    });
+
+  });
 
   // 查看
   $('.view').click(function () {

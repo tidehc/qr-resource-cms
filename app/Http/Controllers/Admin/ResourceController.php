@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use App\Resource;
 use App\Category;
+use Libs\Qrcode\QrCode;
 
 /**
  * 废弃资源控制器
@@ -61,6 +62,25 @@ class ResourceController extends Controller
         return view('admin.resource.show', [
             'resource' => $resource
         ]);
+    }
+    
+    /**
+     * 查看资源二维码
+     */
+    public function showQrCode($id)
+    {
+        return view('admin.resource.showQrCode', [
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * 二维码图片
+     */
+    public function qrCode($id)
+    { 
+        $qrCode = new QrCode($id);
+        $qrCode->generate();
     }
 
     /**
