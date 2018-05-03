@@ -20,7 +20,6 @@
         <form id="form-resource-create" action="{{ url('index/resource/storeByQrcode') }}" method="post">
           {{ csrf_field() }}
           <div class="alert alert-dismissible alert-warning">
-            <h4><i class="fa fa-exclamation" aria-hidden="true"></i> 使用方法：</h4>
             <p>请保持光标留在下面的文本框内，然后使用 <strong>扫码枪</strong> 等设备扫描二维码，即可提交数据。<em>请勿手动编辑下面方框里的数据！</em></p>
           </div>
           <div class="form-group row">
@@ -46,8 +45,8 @@
 @section('js')
 <script type="text/javascript">
   $('#qrcode-data').keyup(function () {
-    // let data = $(this).val();
-    // alert(data);
+    let data = $(this).val();
+    console.log(data);
   });
 </script>
 @endsection
