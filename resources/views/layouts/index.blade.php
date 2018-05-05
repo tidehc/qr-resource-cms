@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="资源回收，二维码，内容管理系统，管理信息系统，Qr-Code，CMS，ERP" />
+    <meta name="description" content="{{ config('app.name') }} 致力于为现今的资源回收行业提供一份新的线上解决方案，整合各方资源，开展信息采集、数据分析、流向监控，通过二维码等物联网技术跟踪产品及废弃物流向，完善再生资源回收体系，促使再生资源交易市场由线下向线上线下结合转型升级，减少回收环节，降低回收成本，提升再生资源的回收效率。" />
     <link rel="shortcut icon" href="{{ url('favicon.ico') }}">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">

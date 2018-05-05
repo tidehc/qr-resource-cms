@@ -5,6 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>{{ config('app.name', 'Welcome') }}</title>
+  <meta name="keywords" content="资源回收，二维码，内容管理系统，管理信息系统，Qr-Code，CMS，ERP" />
+  <meta name="description" content="{{ config('app.name') }} 致力于为现今的资源回收行业提供一份新的线上解决方案，整合各方资源，开展信息采集、数据分析、流向监控，通过二维码等物联网技术跟踪产品及废弃物流向，完善再生资源回收体系，促使再生资源交易市场由线下向线上线下结合转型升级，减少回收环节，降低回收成本，提升再生资源的回收效率。" />
   <link rel="shortcut icon" href="{{ url('favicon.ico') }}">
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -65,7 +67,7 @@
             <h2 class="center brown-text"><i class="material-icons">flight_takeoff</i></h2>
             <h5 class="center">多方整合</h5>
 
-            <p class="light">利用互联网、大数据建立便捷高效的再生资源回收交易服务平台，整合物流资源，梳理回收渠道，优化回收网点布局，使供需双方能够快速获得信息匹配，实现上下游企业间的智能化物流，完善再生资源回收体系，</p>
+            <p class="light">利用互联网、大数据建立便捷高效的再生资源回收交易服务平台，整合物流资源，梳理回收渠道，优化回收网点布局，使供需双方能够快速获得信息匹配，实现上下游企业间的智能化物流，完善再生资源回收体系。</p>
           </div>
         </div>
 
