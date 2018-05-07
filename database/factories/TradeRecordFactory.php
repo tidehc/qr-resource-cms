@@ -7,7 +7,7 @@ $factory->define(App\TradeRecord::class, function (Faker $faker) {
 
     return [
         'order_number' => date('YmdHis') . str_random(9),
-        'menufactoring_number' => date('YmdHis') . random_int(10000000, 99999999),
+        'menufactoring_number' => date('YmdHis') . random_int(1.0e7, 9.9e7),
         'product_name' => '聚乙烯篮子箱子' . str_random(4),
         'category_id' => 1,
         'weight' => random_int(10, 100),

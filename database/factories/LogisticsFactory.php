@@ -6,7 +6,7 @@ $factory->define(App\Logistics::class, function () {
     $faker = \Faker\Factory::create('zh_CN'); // 汉化
 
     return [
-        'logistics_number' => date('YmdHis') . random_int(10000000, 99999999),
+        'logistics_number' => date('YmdHis') . random_int(1.0e7, 9.9e7),
         'product_name' => '废弃聚丙烯塑料' . str_random(4),
         'category_id' => 1,
         'logistics_price' => $faker->biasedNumberBetween() . '00',

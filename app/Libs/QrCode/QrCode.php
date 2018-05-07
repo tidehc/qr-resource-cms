@@ -92,7 +92,6 @@ EOD;
         // 4. 向浏览器输出最终的二维码
         header("Content-type: image/png");
         ob_end_clean();
-        imagepng($qrCodeImg, __DIR__.'/tmp/qrcode.png');
         imagepng($box);
 
         // 5. 销毁图片资源
