@@ -12,8 +12,7 @@ $factory->define(App\Resource::class, function () {
         'product_name' => '聚乙烯篮子箱子' . str_random(6),
         'menufactoring_number' => date('YmdHis') . random_int(10000000, 99999999),
         'number_auth' => '河北省秦皇岛市环保局',  
-        'recycle_number' => date('YmdHis') . random_int(100000000000, 999999999999)
-,
+        'recycle_number' => date('YmdHis') . random_int(100000000000, 999999999999),
         'toxic' => $toxic = random_int(0, 1),
         'poison_category' => $toxic ? '中等': '无',
         'weight' => random_int(10, 100),
