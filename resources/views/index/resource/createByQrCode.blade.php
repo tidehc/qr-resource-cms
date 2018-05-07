@@ -48,5 +48,21 @@
     let data = $(this).val();
     console.log(data);
   });
+  $('#form-resource-create').on('submit', function () {
+    swal({
+        title: '该功能暂未开放',
+        text: '2秒后自动关闭',
+        timer: 2000
+    }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+            if (dismiss === 'timer') {
+                console.log('I was closed by the timer')
+            }
+        }
+    );
+    return false;
+  });
 </script>
 @endsection
