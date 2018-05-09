@@ -12,17 +12,17 @@ use Endroid\QrCode\Response\QrCodeResponse;
 */
 class QrCode
 {
-    private $resource;
-    private $qrCodeSize = 160;
-    private $boxSize = 300;
-    private $padding = 15;
-    private $bgColor = ['r' => 255, 'g' => 255, 'b' => 255, 'a' => 0];
-    private $color = ['r' => 0, 'g' => 0, 'b' => 0, 'a' => 0];
-    private $font = __DIR__ . '/../../../vendor/endroid/qr-code/assets/fonts/noto_sans.otf';
-    private $fontSize = 11;
-    private $lineHeight = 1.85;
-    private $x = 15;
-    private $y = 200;
+    private $resource; // 要绘制二维码的资源模型实例
+    private $qrCodeSize = 175; // 二维码尺寸
+    private $boxSize = 300; // 二维码的容器图片的尺寸
+    private $padding = 15; // 容器图片的内填充
+    private $bgColor = ['r' => 255, 'g' => 255, 'b' => 255, 'a' => 0]; // 二维码（和容器图片）的背景色
+    private $color = ['r' => 0, 'g' => 0, 'b' => 0, 'a' => 0];// 二维码（和容器图片）的文本色
+    private $font = __DIR__ . '/../../../vendor/endroid/qr-code/assets/fonts/noto_sans.otf'; // 字体文件路径
+    private $fontSize = 8; // 字体尺寸
+    private $lineHeight = 1.85; // 二维码标签有多行时的行高
+    private $x = 15; // 二维码在容器图片中的x坐标
+    private $y = 200; // 二维码在容器图片中的y坐标
 
     public function __construct($id)
     {
@@ -32,11 +32,12 @@ class QrCode
     /**
      * 生成二维码
      * 
+     * @param  boolean $isMultiLines 文字标签描述信息是否多行。默认false，即单行。
      * @return void
      */
-    public function generate()
+    public function generate(boolean $isMultiLines = null)
     {
-        // 1. 生成二维码
+        // 0. 生成二维码
         $text = <<<EOD
 BEGIN;
 CategoryId:{$this->resource->category_id};
@@ -62,9 +63,29 @@ EOD;
         $qrCode->setForegroundColor($this->color);
         $qrCode->setBackgroundColor($this->bgColor);
         $qrCode->setRoundBlockSize(true);
-        $qrCode->setValidateResult(false);    
+        $qrCode->setValidateResult(false);
 
-        // 2. 生成容器图片，并写图片底部的文字描述
+        if (! $isMultiLines) {
+            $qrCode->setLabel($this->resource->recycle_number, $this->fontSize, $this->font, LabelAlignment::CENTER);
+            // 输出二维码
+            header('Content-Type: '.$qrCode->getContentType());
+            echo $qrCode->writeString();
+        } else {
+            $response = new QrCodeResponse($qrCode);
+            $stream = $response->getContent();
+            $this->withMultiLines($stream);
+        }
+    }
+
+    /**
+     * 为已生成的二维码，写多行的文字标签
+     * 
+     * @param  string $stream 二维码图片的字符流
+     * @return void
+     */
+    public function withMultiLines($stream)
+    {
+        // 1. 生成容器图片，并写图片底部的文字描述
         $box = imagecreate($this->boxSize, $this->boxSize) or die("Cannot Initialize new GD image stream");
         $bgColor = imagecolorallocate($box, $this->bgColor['r'], $this->bgColor['g'], $this->bgColor['b']);
         $color = imagecolorallocate($box, $this->color['r'], $this->color['g'], $this->color['b']);
@@ -81,20 +102,18 @@ EOD;
             $y += $this->fontSize * $this->lineHeight;
         }
 
-        // 3. 拷贝二维码
-        $response = new QrCodeResponse($qrCode);
-        $stream = $response->getContent();
+        // 2. 拷贝二维码
         $qrCodeImg = imagecreatefromstring($stream);
         $srcX = ($this->boxSize - $this->qrCodeSize) / 2;
         $srcY = $this->padding;
         imagecopyresized($box, $qrCodeImg, $srcX, $srcY, 0, 0, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize);
 
-        // 4. 向浏览器输出最终的二维码
+        // 3. 向浏览器输出最终的二维码
         header("Content-type: image/png");
         ob_end_clean();
         imagepng($box);
 
-        // 5. 销毁图片资源
+        // 4. 销毁图片资源
         imagedestroy($qrCodeImg);
         imagedestroy($box);
     }
