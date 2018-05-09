@@ -19,10 +19,8 @@ class QrCode
     private $bgColor = ['r' => 255, 'g' => 255, 'b' => 255, 'a' => 0]; // 二维码（和容器图片）的背景色
     private $color = ['r' => 0, 'g' => 0, 'b' => 0, 'a' => 0];// 二维码（和容器图片）的文本色
     private $font = __DIR__ . '/../../../vendor/endroid/qr-code/assets/fonts/noto_sans.otf'; // 字体文件路径
-    private $fontSize = 8; // 字体尺寸
+    private $fontSize = 11; // 字体尺寸
     private $lineHeight = 1.85; // 二维码标签有多行时的行高
-    private $x = 15; // 二维码在容器图片中的x坐标
-    private $y = 200; // 二维码在容器图片中的y坐标
 
     public function __construct($id)
     {
@@ -37,7 +35,7 @@ class QrCode
      */
     public function generate(boolean $isMultiLines = null)
     {
-        // 0. 生成二维码
+        // 1. 生成二维码
         $text = <<<EOD
 BEGIN;
 CategoryId:{$this->resource->category_id};
@@ -63,57 +61,54 @@ EOD;
         $qrCode->setForegroundColor($this->color);
         $qrCode->setBackgroundColor($this->bgColor);
         $qrCode->setRoundBlockSize(true);
-        $qrCode->setValidateResult(false);
+        $qrCode->setValidateResult(false);    
 
-        if (! $isMultiLines) {
-            $qrCode->setLabel($this->resource->recycle_number, $this->fontSize, $this->font, LabelAlignment::CENTER);
-            // 输出二维码
-            header('Content-Type: '.$qrCode->getContentType());
-            echo $qrCode->writeString();
-        } else {
-            $response = new QrCodeResponse($qrCode);
-            $stream = $response->getContent();
-            $this->withMultiLines($stream);
-        }
-    }
-
-    /**
-     * 为已生成的二维码，写多行的文字标签
-     * 
-     * @param  string $stream 二维码图片的字符流
-     * @return void
-     */
-    public function withMultiLines($stream)
-    {
-        // 1. 生成容器图片，并写图片底部的文字描述
+        // 2. 生成容器图片
         $box = imagecreate($this->boxSize, $this->boxSize) or die("Cannot Initialize new GD image stream");
         $bgColor = imagecolorallocate($box, $this->bgColor['r'], $this->bgColor['g'], $this->bgColor['b']);
         $color = imagecolorallocate($box, $this->color['r'], $this->color['g'], $this->color['b']);
-        $label = [
-            '废弃资源二维码标签',
-            '类别：' . $this->resource->category->display_name,
-            '名称：' . $this->resource->product_name,
-            '编号：' . $this->resource->recycle_number,
-            '编号授权：' . $this->resource->number_auth 
-        ];
-        $y = $this->y;
+
+        // 3. 拷贝二维码
+        $response = new QrCodeResponse($qrCode);
+        $stream = $response->getContent();
+        $qrCodeImg = imagecreatefromstring($stream);
+        $srcX = ($this->boxSize - $this->qrCodeSize) / 2; // 二维码水平居中
+        $srcY = $isMultiLines ? 0 : ($this->boxSize - $this->qrCodeSize) / 2 - $this->padding; // 单行标签时，二维码纵向居中，上移 $this->padding 值
+        imagecopyresized($box, $qrCodeImg, $srcX, $srcY, 0, 0, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize);
+
+        // 4. 写图片底部的文字描述
+        if (! $isMultiLines) {
+            $label = [
+                '回收编号：' . $this->resource->recycle_number
+            ];
+        } else {
+            $label = [
+                '废弃资源二维码标签',
+                '类别：' . $this->resource->category->display_name,
+                '名称：' . $this->resource->product_name,
+                '编号：' . $this->resource->recycle_number,
+                '编号授权：' . $this->resource->number_auth 
+            ];
+        }
+        
+        if ($isMultiLines) {
+            $x = $this->padding;
+        } else {
+            $lineWidth = imagefontwidth($this->fontSize) * mb_strlen($label[0], 'UTF-8');
+            $x = ($this->boxSize - $lineWidth) / 2;
+        }
+        $y = $srcY + $this->qrCodeSize + $this->padding;
         foreach ($label as $line) { // 循环写行
-            imagettftext($box, $this->fontSize, 0, $this->x, $y, $color, $this->font, $line);
+            imagettftext($box, $this->fontSize, 0, $x, $y, $color, $this->font, $line);
             $y += $this->fontSize * $this->lineHeight;
         }
 
-        // 2. 拷贝二维码
-        $qrCodeImg = imagecreatefromstring($stream);
-        $srcX = ($this->boxSize - $this->qrCodeSize) / 2;
-        $srcY = $this->padding;
-        imagecopyresized($box, $qrCodeImg, $srcX, $srcY, 0, 0, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize);
-
-        // 3. 向浏览器输出最终的二维码
+        // 5. 向浏览器输出最终的二维码
         header("Content-type: image/png");
         ob_end_clean();
         imagepng($box);
 
-        // 4. 销毁图片资源
+        // 6. 销毁图片资源
         imagedestroy($qrCodeImg);
         imagedestroy($box);
     }
