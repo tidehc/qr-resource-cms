@@ -23,35 +23,37 @@
             <button class="pull-right btn btn-sm btn-danger create" type="button"><i class="fa fa-plus"></i> 添加权限</button>
           </div>
         </div>
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>权限名</th>
-              <th>显示名称</th>
-              <th>描述</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($permissions as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->name }}</td>
-                <td>
-                  <span class="badge badge-dark">{{ $v->display_name }}</span>
-                </td>
-                <td>{{ $v->description }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>权限名</th>
+                <th>显示名称</th>
+                <th>描述</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($permissions as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->name }}</td>
+                  <td>
+                    <span class="badge badge-dark">{{ $v->display_name }}</span>
+                  </td>
+                  <td>{{ $v->description }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $permissions->links() }}       
       </div>
     </div>

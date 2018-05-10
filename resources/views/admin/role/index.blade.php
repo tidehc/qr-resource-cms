@@ -23,40 +23,42 @@
             <button class="pull-right btn btn-sm btn-danger create" type="button"><i class="fa fa-plus"></i>添加角色</button>
           </div>
         </div>
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>角色名</th>
-              <th>显示名称</th>
-              <th>描述</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($roles as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->name }}</td>
-                <td>
-                  @if($v->name == 'admin')
-                    <span class="badge badge-pill badge-danger">{{ $v->display_name }}</span>
-                  @else
-                    <span class="badge badge-pill badge-success">{{ $v->display_name }}</span>
-                  @endif
-                </td>
-                <td>{{ $v->description }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-info view" href="#" title="查看"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>角色名</th>
+                <th>显示名称</th>
+                <th>描述</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($roles as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->name }}</td>
+                  <td>
+                    @if($v->name == 'admin')
+                      <span class="badge badge-pill badge-danger">{{ $v->display_name }}</span>
+                    @else
+                      <span class="badge badge-pill badge-success">{{ $v->display_name }}</span>
+                    @endif
+                  </td>
+                  <td>{{ $v->description }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-info view" href="#" title="查看"><i class="fa fa-eye"></i></a>
+                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $roles->links() }}       
       </div>
     </div>

@@ -17,41 +17,43 @@
       @include('admin.success')
       @include('admin.errors')
       <div class="tile">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>回收商</th>
-              <th>回收分类</th>
-              <th>回收价格</th>
-              <th>详细地址</th>
-              <th>联系人</th>
-              <th>手机号</th>
-              <th>电子邮件</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($recyclers as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->name }}</td>
-                <td>{{ $v->category->display_name or '不存在'}}</td>
-                <td>{{ $v->product_price }}</td>
-                <td>{{ $v->address }}</td>
-                <td>{{ $v->contact }}</td>
-                <td>{{ $v->phone }}</td>
-                <td>{{ $v->email }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>回收商</th>
+                <th>回收分类</th>
+                <th>回收价格</th>
+                <th>详细地址</th>
+                <th>联系人</th>
+                <th>手机号</th>
+                <th>电子邮件</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($recyclers as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->name }}</td>
+                  <td>{{ $v->category->display_name or '不存在'}}</td>
+                  <td>{{ $v->product_price }}</td>
+                  <td>{{ $v->address }}</td>
+                  <td>{{ $v->contact }}</td>
+                  <td>{{ $v->phone }}</td>
+                  <td>{{ $v->email }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $recyclers->links() }}       
       </div>
     </div>

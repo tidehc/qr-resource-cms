@@ -23,36 +23,38 @@
             <button class="pull-right btn btn-sm btn-danger create" type="button"><i class="fa fa-plus"></i>添加管理员</button>
           </div>
         </div>
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>管理员</th>
-              <th>手机号</th>
-              <th>备注</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($admins as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->username }}</td>
-                <td>{{ $v->phone }}</td>
-                <td>{{ $v->memo }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-info view" href="#" title="查看"><i class="fa fa-eye"></i></a>
-                    @if($v->username !== 'admin')
-                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
-                      <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
-                    @endif
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>管理员</th>
+                <th>手机号</th>
+                <th>备注</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($admins as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->username }}</td>
+                  <td>{{ $v->phone }}</td>
+                  <td>{{ $v->memo }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-info view" href="#" title="查看"><i class="fa fa-eye"></i></a>
+                      @if($v->username !== 'admin')
+                        <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
+                      @endif
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $admins->links() }}       
       </div>
     </div>
