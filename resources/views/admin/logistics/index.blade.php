@@ -50,9 +50,9 @@
                 <td>{{ $v->receive_phone }}</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn btn-sm btn-success view" href="#"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-sm btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-sm btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-sm btn-success view" href="#" title="查看"><i class="fa fa-eye"></i></a>
+                    <a class="btn btn-sm btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-sm btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
                   </div>
                 </td>
               </tr>

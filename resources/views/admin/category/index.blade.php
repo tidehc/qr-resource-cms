@@ -36,8 +36,8 @@
                 <td>{{ $v->description }}</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
                   </div>
                 </td>
               </tr>

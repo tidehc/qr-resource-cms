@@ -18,8 +18,10 @@
       @include('admin.success')
       @include('admin.errors')
       <div class="tile">
-        <div class="tile-title-w-btn">
-          <button class="btn btn-sm btn-info create" type="button"><i class="fa fa-plus"></i>添加管理员</button>
+        <div class="tile-title-w-btn row">
+          <div class="col-md-12">
+            <button class="pull-right btn btn-sm btn-danger create" type="button"><i class="fa fa-plus"></i>添加管理员</button>
+          </div>
         </div>
         <table class="table table-sm">
           <thead>
@@ -40,10 +42,10 @@
                 <td>{{ $v->memo }}</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn btn-info view" href="#"><i class="fa fa-eye"></i></a>
+                    <a class="btn btn-info view" href="#" title="查看"><i class="fa fa-eye"></i></a>
                     @if($v->username !== 'admin')
-                      <a class="btn btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                      <a class="btn btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
+                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
                     @endif
                   </div>
                 </td>

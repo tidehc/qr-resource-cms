@@ -136,7 +136,6 @@
                   <input class="form-control" type="password" name="password_confirmation" value="" placeholder="请确认新密码">
                 </div>
               </div>
-              </div>
               <div class="form-group row">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">

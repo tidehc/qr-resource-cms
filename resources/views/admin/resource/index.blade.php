@@ -17,60 +17,63 @@
       @include('index.success')
       @include('index.errors')
       <div class="tile">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>资源类别</th>
-              <th>物品名称</th>
-              <th>出厂编号</th>
-              <th>编号授权方</th>
-              <th>回收编号</th>
-              <th>毒害性</th>
-              <th>毒害类别</th>
-              <th>重量</th>
-              <th>数量</th>
-              <th>交回人</th>
-              <th>回收地区</th>
-              <th>回收企业</th>
-              <th>回收时间</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($resources as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->category->display_name or '不存在'}}</td>
-                <td>{{ $v->product_name }}</td>
-                <td>{{ $v->menufactoring_number }}</td>
-                <td>{{ $v->number_auth }}</td>
-                <td>{{ $v->recycle_number }}</td>
-                <td>
-                  @if($v->toxic)
-                    <span class="badge badge-danger">有毒</span>
-                  @else
-                    <span class="badge badge-success">无毒</span>
-                  @endif
-                </td>
-                <td>{{ $v->poison_category }}</td>
-                <td>{{ $v->weight }}</td>
-                <td>{{ $v->quantity }}</td>
-                <td>{{ $v->jiao_hui_ren }}</td>
-                <td>{{ $v->recycle_area }}</td>
-                <td>{{ $v->recycle_company }}</td>
-                <td>{{ $v->recycle_time }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-sm btn-info viewQrCode" href="#"><i class="fa fa-qrcode"></i></a>
-                    <a class="btn btn-sm btn-success view" href="#"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-sm btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-sm btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>资源类别</th>
+                <th>物品名称</th>
+                <th>出厂编号</th>
+                <th>编号授权方</th>
+                <th>回收编号</th>
+                <th>毒害性</th>
+                <th>毒害类别</th>
+                <th>重量</th>
+                <th>数量</th>
+                <th>交回人</th>
+                <th>回收地区</th>
+                <th>回收企业</th>
+                <th>回收时间</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($resources as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->category->display_name or '不存在'}}</td>
+                  <td>{{ $v->product_name }}</td>
+                  <td>{{ $v->menufactoring_number }}</td>
+                  <td>{{ $v->number_auth }}</td>
+                  <td>{{ $v->recycle_number }}</td>
+                  <td>
+                    @if($v->toxic)
+                      <span class="badge badge-danger">有毒</span>
+                    @else
+                      <span class="badge badge-success">无毒</span>
+                    @endif
+                  </td>
+                  <td>{{ $v->poison_category }}</td>
+                  <td>{{ $v->weight }}</td>
+                  <td>{{ $v->quantity }}</td>
+                  <td>{{ $v->jiao_hui_ren }}</td>
+                  <td>{{ $v->recycle_area }}</td>
+                  <td>{{ $v->recycle_company }}</td>
+                  <td>{{ $v->recycle_time }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-info viewQrCode" href="#"><i class="fa fa-qrcode"></i></a>
+                      <a class="btn btn-sm btn-success view" href="#" title="查看"><i class="fa fa-eye"></i></a>
+                      <a class="btn btn-sm btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-sm btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $resources->links() }}       
       </div>
     </div>

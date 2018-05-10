@@ -17,32 +17,34 @@
       @include('index.success')
       @include('index.errors')
       <div class="tile">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>分类名</th>
-              <th>显示名称</th>
-              <th>描述</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($categorys as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->name }}</td>
-                <td>{{ $v->display_name }}</td>
-                <td>{{ $v->description }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>分类名</th>
+                <th>显示名称</th>
+                <th>描述</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($categorys as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->name }}</td>
+                  <td>{{ $v->display_name }}</td>
+                  <td>{{ $v->description }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $categorys->links() }}       
       </div>
     </div>

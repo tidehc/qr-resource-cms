@@ -17,48 +17,50 @@
       @include('admin.success')
       @include('admin.errors')
       <div class="tile">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>用户</th>
-              <th>地址</th>
-              <th>电子邮箱</th>
-              <th>手机号</th>
-              <th>废弃资源原产品生产企业</th>
-              <th>销售商</th>
-              <th>回收商</th>
-              <th>交易商</th>
-              <th>物流商</th>
-              <th>拆解企业</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($users as $v)
-              <tr data-id="{{ $v->id }}">
-                <td>{{ $v->id }}</td>
-                <td>{{ $v->username }}</td>
-                <td>{{ $v->address }}</td>
-                <td>{{ $v->email }}</td>
-                <td>{{ $v->phone }}</td>
-                <td>{{ $v->production_enterprise }}</td>
-                <td>{{ $v->seller }}</td>
-                <td>{{ $v->recycler }}</td>
-                <td>{{ $v->trader }}</td>
-                <td>{{ $v->logistics_provider }}</td>
-                <td>{{ $v->dismantling_enterprise }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-success view" href="#"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-primary edit" href="#"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger delete" href="#"><i class="fa fa-trash"></i></a>
-                  </div>
-                </td>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>用户</th>
+                <th>地址</th>
+                <th>电子邮箱</th>
+                <th>手机号</th>
+                <th>废弃资源原产品生产企业</th>
+                <th>销售商</th>
+                <th>回收商</th>
+                <th>交易商</th>
+                <th>物流商</th>
+                <th>拆解企业</th>
+                <th>操作</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach($users as $v)
+                <tr data-id="{{ $v->id }}">
+                  <td>{{ $v->id }}</td>
+                  <td>{{ $v->username }}</td>
+                  <td>{{ $v->address }}</td>
+                  <td>{{ $v->email }}</td>
+                  <td>{{ $v->phone }}</td>
+                  <td>{{ $v->production_enterprise }}</td>
+                  <td>{{ $v->seller }}</td>
+                  <td>{{ $v->recycler }}</td>
+                  <td>{{ $v->trader }}</td>
+                  <td>{{ $v->logistics_provider }}</td>
+                  <td>{{ $v->dismantling_enterprise }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-success view" href="#" title="查看"><i class="fa fa-eye"></i></a>
+                      <a class="btn btn-primary edit" href="#" title="编辑"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger delete" href="#" title="删除"><i class="fa fa-trash"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
         {{ $users->links() }}       
       </div>
     </div>
