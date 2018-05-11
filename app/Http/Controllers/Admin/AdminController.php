@@ -219,18 +219,8 @@ class AdminController extends Controller
         ])->validate();
 
         $admin = Admin::find(session('admin')->id);
-        if (!empty($input['username'])) {
-            $admin->username = $input['username'];
-        }
-        if (!empty($input['email'])) {
-            $admin->email = $input['email'];
-        }
-        if (!empty($input['phone'])) {
-            $admin->phone = $input['phone'];
-        }
-        if (!empty($input['memo'])) {
-            $admin->memo = $input['memo'];
-        }
+        $admin->phone = $input['phone'] ? : '';
+        $admin->memo = $input['memo'] ? : '';
 
         if ($admin->save()) {
             session(['admin' => $admin]); // 更新session
