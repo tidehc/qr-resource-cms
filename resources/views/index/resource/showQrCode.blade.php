@@ -8,7 +8,7 @@
         <br>
         <img id="img-qrcode" class="img-rounded" src="{{ url('index/resource/qrCode/' . $id) }}" alt="二维码图片">
         <br><br>
-        <button class="btn btn-block btn-primary" id="print" onclick="doPrint()"><i class="fa fa-print" aria-hidden="true"></i>打印二维码</button>
+        <button class="btn btn-block btn-primary" id="print" onclick="doPrint()"><i class="fa fa-print" aria-hidden="true"></i>打 印</button>
       </div>
     </div>
   </div>
@@ -19,9 +19,11 @@
 <script type="text/javascript">
 function doPrint(){
   let src = document.getElementById('img-qrcode').src;
-  let newWin = window.open(src, 'Print Qr-Code');
-  newWin.print();
-  newWin.close();
+  let newWin = window.open(src, '_blank');
+  newWin.onload = () => {
+    newWin.print();
+    newWin.close();
+  }
 }
 </script>
 @endsection

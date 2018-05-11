@@ -36,6 +36,7 @@ Route::group(['prefix' => 'index', 'namespace' => 'Index', 'middleware' => 'redi
 
     // 废弃资源管理
     Route::get('resource/createByQrCode', 'ResourceController@createByQrCode');
+    Route::post('resource/storeByQrCode', 'ResourceController@storeByQrCode');
     Route::get('resource/showQrCode/{id}', 'ResourceController@showQrCode');
     Route::get('resource/qrCode/{id}', 'ResourceController@qrCode');
     Route::resource('resource', 'ResourceController');

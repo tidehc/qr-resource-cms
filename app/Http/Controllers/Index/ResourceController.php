@@ -110,7 +110,7 @@ class ResourceController extends Controller
         $resource->menufactoring_number = $input['menufactoring_number'];
         $resource->number_auth = $input['number_auth'];
         $resource->recycle_number = $input['recycle_number'];
-        $resource->toxic = $input['toxic']; // 毒害性，null 和 0 值的测试...
+        $resource->toxic = $input['toxic'];
         $resource->poison_category = $input['poison_category'];
         $resource->weight = $input['weight'];
         $resource->quantity = $input['quantity'];
@@ -123,6 +123,41 @@ class ResourceController extends Controller
             return back()->with('success', '添加成功');
         } else {
             return back()->withErrors('添加失败，请重试');
+        }
+    }
+
+    /**
+     * 处理二维码添加资源的逻辑
+     * 
+     * @param  Request $request 注入的HTTP请求实例
+     * @return void
+     */
+    public function storeByQrCode(Request $request)
+    {
+        $pattern = '/^BEGIN;[\\r\\n\r\n]*CategoryId:(.*?);[\\r\\n\r\n]*ProductName:(.*?);[\\r\\n\r\n]*MenufactoringNumber:(.*?);[\\r\\n\r\n]*NumberAuth:(.*?);[\\r\\n\r\n]*RecycleNumber:(.*?);[\\r\\n\r\n]*Toxic:(\d);[\\r\\n\r\n]*PoisonCategory:(.*?);[\\r\\n\r\n]*Weight:(\d*);[\\r\\n\r\n]*Quantity:(\d*);[\\r\\n\r\n]*JiaoHuiRen:(.*?);[\\r\\n\r\n]*RecycleArea:(.*?);[\\r\\n\r\n]*RecycleCompany:(.*?);[\\r\\n\r\n]*RecycleTime:(.*?);[\\r\\n\r\n]*END;[\\r\\n\r\n]*$/m';
+        if (preg_match($pattern, $request->data, $matches)) {
+            $resource = new Resource;
+            $resource->category_id = $matches[1];
+            $resource->product_name = $matches[2];
+            $resource->menufactoring_number = $matches[3];
+            $resource->number_auth = $matches[4];
+            $resource->recycle_number = $matches[5];
+            $resource->toxic = $matches[6]; 
+            $resource->poison_category = $matches[7];
+            $resource->weight = $matches[8];
+            $resource->quantity = $matches[9];
+            $resource->jiao_hui_ren = $matches[10];
+            $resource->recycle_area = $matches[11];
+            $resource->recycle_company = $matches[12];
+            $resource->recycle_time = $matches[13];
+
+            if ($resource->save()) {
+                return back()->with('success', '添加成功');
+            } else {
+                return back()->withErrors('添加失败，请重试');
+            }
+        } else {
+            return back()->withErrors('二维码数据非法，请核实后重新提交');
         }
     }
 

@@ -41,13 +41,14 @@ BEGIN;
 CategoryId:{$this->resource->category_id};
 ProductName:{$this->resource->product_name};
 MenufactoringNumber:{$this->resource->menufactoring_number};
+NumberAuth:{$this->resource->number_auth};
 RecycleNumber:{$this->resource->recycle_number};
 Toxic:{$this->resource->toxic};
 PoisonCategory:{$this->resource->poison_category};
 Weight:{$this->resource->weight};
 Quantity:{$this->resource->quantity};
 JiaoHuiRen:{$this->resource->jiao_hui_ren};
-RecycleArea:{$this->resource->recycle_area}
+RecycleArea:{$this->resource->recycle_area};
 RecycleCompany:{$this->resource->recycle_company};
 RecycleTime:{$this->resource->recycle_time};
 END;
