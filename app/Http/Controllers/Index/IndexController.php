@@ -39,18 +39,10 @@ class IndexController extends Controller
         ])->validate();
 
         $admin = User::find(session('admin')->id);
-        if (!empty($input['username'])) {
-            $admin->username = $input['username'];
-        }
-        if (!empty($input['email'])) {
-            $admin->email = $input['email'];
-        }
-        if (!empty($input['phone'])) {
-            $admin->phone = $input['phone'];
-        }
-        if (!empty($input['memo'])) {
-            $admin->memo = $input['memo'];
-        }
+        $admin->username = $input['username'] ?: '';
+        $admin->email = $input['email'] ?: '';
+        $admin->phone = $input['phone'] ?: '';
+        $admin->memo = $input['memo'] ?: '';
 
         if ($admin->save()) {
             session(['admin' => $admin]); // 更新session

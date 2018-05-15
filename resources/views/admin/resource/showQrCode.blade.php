@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <div class="text-center">
         <br>
-        <img id="img-qrcode" class="img-rounded" src="{{ url('index/resource/qrCode/' . $id) }}" alt="二维码图片">
+        <img id="img-qrcode" class="img-rounded" src="{{ url('admin/resource/qrCode/' . $id) }}" alt="二维码图片">
         <br><br>
         <button class="btn btn-block btn-primary" id="print" onclick="doPrint()"><i class="fa fa-print" aria-hidden="true"></i>打 印</button>
       </div>

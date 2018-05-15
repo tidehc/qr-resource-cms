@@ -22,7 +22,7 @@
       <div class="login-box">
         <form class="login-form" action="{{ url('admin/login') }}" method="post">
           {{ csrf_field() }}
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登 陆</h3>
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>后台登陆</h3>
           <div class="form-group">
             <label class="control-label">用户名</label>
             <input class="form-control" type="text" name="username" placeholder="Username" autofocus>

@@ -14813,3 +14813,39 @@ be a descendant of the grid when it is being dragged.
 .user .user-settings label {
   color: #666;
 }
+
+/** pagination style*/
+
+ul.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1.5rem;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+ul.pagination li{
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+ul.pagination li a,
+ul.pagination li span {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #009688;
+  background-color: #FFF;
+  border: 1px solid #dee2e6;
+}
+
+ul.pagination li.active span {
+  z-index: 1;
+  color: #FFF;
+  background-color: #009688;
+  border-color: #009688;
+}
