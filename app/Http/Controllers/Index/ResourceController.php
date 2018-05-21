@@ -134,7 +134,7 @@ class ResourceController extends Controller
      */
     public function storeByQrCode(Request $request)
     {
-        $pattern = '/^BEGIN;[\\r\\n\r\n]*CategoryId:(.*?);[\\r\\n\r\n]*ProductName:(.*?);[\\r\\n\r\n]*MenufactoringNumber:(.*?);[\\r\\n\r\n]*NumberAuth:(.*?);[\\r\\n\r\n]*RecycleNumber:(.*?);[\\r\\n\r\n]*Toxic:(\d);[\\r\\n\r\n]*PoisonCategory:(.*?);[\\r\\n\r\n]*Weight:(\d*);[\\r\\n\r\n]*Quantity:(\d*);[\\r\\n\r\n]*JiaoHuiRen:(.*?);[\\r\\n\r\n]*RecycleArea:(.*?);[\\r\\n\r\n]*RecycleCompany:(.*?);[\\r\\n\r\n]*RecycleTime:(.*?);[\\r\\n\r\n]*END;[\\r\\n\r\n]*$/m';
+        $pattern = '/^CategoryId:(.*?);[\\r\\n\r\n]*ProductName:(.*?);[\\r\\n\r\n]*MenufactoringNumber:(.*?);[\\r\\n\r\n]*NumberAuth:(.*?);[\\r\\n\r\n]*RecycleNumber:(.*?);[\\r\\n\r\n]*Toxic:(\d);[\\r\\n\r\n]*PoisonCategory:(.*?);[\\r\\n\r\n]*Weight:(\d*);[\\r\\n\r\n]*Quantity:(\d*);[\\r\\n\r\n]*JiaoHuiRen:(.*?);[\\r\\n\r\n]*RecycleArea:(.*?);[\\r\\n\r\n]*RecycleCompany:(.*?);[\\r\\n\r\n]*RecycleTime:(.*?);[\\r\\n\r\n]*$/m';
         if (preg_match($pattern, $request->data, $matches)) {
             $resource = new Resource;
             $resource->category_id = $matches[1];
