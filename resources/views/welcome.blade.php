@@ -12,11 +12,30 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdn.bootcss.com/materialize/1.0.0-beta/css/materialize.min.css" rel="stylesheet">
   <link href="{{ asset('css/welcome.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style type="text/css">
+    .brand-logo img{
+      padding-bottom: 6px;
+      height: 56px;
+      vertical-align: middle;
+    }
+    @media screen and  (max-width: 768px) {
+      .brand-logo img{
+        display: none;
+      }
+    }
+    .brand-logo .part-2{
+      margin-left: -2px;
+    }
+  </style>
 </head>
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">{{ config('app.name', 'Welcome') }}</a>
+      <a id="logo-container" href="#" class="brand-logo">
+        <img class="img-responsive part-1" src="{{ asset('images/tutlogo.gif') }}" alt="Brand">
+        <img class="img-responsive part-2" src="{{ asset('images/cnis-logo.png') }}" alt="Brand">
+        {{ config('app.name', 'Welcome') }}  
+      </a>
       <ul class="right hide-on-med-and-down">
         @if(session('user') == null)
             <li><a href="{{ url('index/login') }}">登 录</a></li>
@@ -42,7 +61,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">二维码资源回收系统</h1>
+        <h1 class="header center teal-text text-lighten-2">面向再生资源回收的二维码管理信息演示系统</h1>
         <div class="row center">
           <h5 class="header col s12 light">一套结合二维码等物联网技术、面向再生资源回收的线上解决方案</h5>
         </div>

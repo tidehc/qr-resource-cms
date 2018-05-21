@@ -106,12 +106,6 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="control-label col-md-2"><span class="text-danger">*</span> 回收企业：</label>
-            <div class="col-md-10">
-              <input class="form-control" id="recycle_company" name="recycle_company" type="text" placeholder="请输入回收企业" required="">
-            </div>
-          </div>
-          <div class="form-group row">
             <label class="control-label col-md-2"><span class="text-danger">*</span> 回收时间：</label>
             <div class="col-md-10">
               <input class="form-control" type="text" id="recycle_time" name="recycle_time" placeholder="请选择回收时间" required="">

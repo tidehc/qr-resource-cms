@@ -8,19 +8,19 @@ use Endroid\QrCode\QrCode as EndroidQrCode;
 use Endroid\QrCode\Response\QrCodeResponse;
 
 /**
-* äºŒç»´ç ç±»åº“
+* ¶şÎ¬ÂëÀà¿â
 */
 class QrCode
 {
-    private $resource; // è¦ç»˜åˆ¶äºŒç»´ç çš„èµ„æºæ¨¡å‹å®ä¾‹
-    private $qrCodeSize = 175; // äºŒç»´ç å°ºå¯¸
-    private $boxSize = 300; // äºŒç»´ç çš„å®¹å™¨å›¾ç‰‡çš„å°ºå¯¸
-    private $padding = 15; // å®¹å™¨å›¾ç‰‡çš„å†…å¡«å……
-    private $bgColor = ['r' => 255, 'g' => 255, 'b' => 255, 'a' => 0]; // äºŒç»´ç ï¼ˆå’Œå®¹å™¨å›¾ç‰‡ï¼‰çš„èƒŒæ™¯è‰²
-    private $color = ['r' => 0, 'g' => 0, 'b' => 0, 'a' => 0];// äºŒç»´ç ï¼ˆå’Œå®¹å™¨å›¾ç‰‡ï¼‰çš„æ–‡æœ¬è‰²
-    private $font = __DIR__ . '/../../../vendor/endroid/qr-code/assets/fonts/noto_sans.otf'; // å­—ä½“æ–‡ä»¶è·¯å¾„
-    private $fontSize = 11; // å­—ä½“å°ºå¯¸
-    private $lineHeight = 1.85; // äºŒç»´ç æ ‡ç­¾æœ‰å¤šè¡Œæ—¶çš„è¡Œé«˜
+    private $resource; // Òª»æÖÆ¶şÎ¬ÂëµÄ×ÊÔ´Ä£ĞÍÊµÀı
+    private $qrCodeSize = 255; // ¶şÎ¬Âë³ß´ç
+    private $boxSize = 300; // ¶şÎ¬ÂëµÄÈİÆ÷Í¼Æ¬µÄ³ß´ç
+    private $padding = 15; // ÈİÆ÷Í¼Æ¬µÄÄÚÌî³ä
+    private $bgColor = ['r' => 255, 'g' => 255, 'b' => 255, 'a' => 0]; // ¶şÎ¬Âë£¨ºÍÈİÆ÷Í¼Æ¬£©µÄ±³¾°É«
+    private $color = ['r' => 0, 'g' => 0, 'b' => 0, 'a' => 0];// ¶şÎ¬Âë£¨ºÍÈİÆ÷Í¼Æ¬£©µÄÎÄ±¾É«
+    private $font = __DIR__ . '/../../../vendor/endroid/qr-code/assets/fonts/noto_sans.otf'; // ×ÖÌåÎÄ¼şÂ·¾¶
+    private $fontSize = 12; // ×ÖÌå³ß´ç
+    private $lineHeight = 1.85; // ¶şÎ¬Âë±êÇ©ÓĞ¶àĞĞÊ±µÄĞĞ¸ß
 
     public function __construct($id)
     {
@@ -28,16 +28,15 @@ class QrCode
     }
 
     /**
-     * ç”ŸæˆäºŒç»´ç 
+     * Éú³É¶şÎ¬Âë
      * 
-     * @param  boolean $isMultiLines æ–‡å­—æ ‡ç­¾æè¿°ä¿¡æ¯æ˜¯å¦å¤šè¡Œã€‚é»˜è®¤falseï¼Œå³å•è¡Œã€‚
+     * @param  boolean $isMultiLines ÎÄ×Ö±êÇ©ÃèÊöĞÅÏ¢ÊÇ·ñ¶àĞĞ¡£Ä¬ÈÏfalse£¬¼´µ¥ĞĞ¡£
      * @return void
      */
     public function generate(boolean $isMultiLines = null)
     {
-        // 1. ç”ŸæˆäºŒç»´ç 
+        // 1. Éú³É¶şÎ¬Âë
         $text = <<<EOD
-BEGIN;
 CategoryId:{$this->resource->category_id};
 ProductName:{$this->resource->product_name};
 MenufactoringNumber:{$this->resource->menufactoring_number};
@@ -51,44 +50,43 @@ JiaoHuiRen:{$this->resource->jiao_hui_ren};
 RecycleArea:{$this->resource->recycle_area};
 RecycleCompany:{$this->resource->recycle_company};
 RecycleTime:{$this->resource->recycle_time};
-END;
 EOD;
         $qrCode = new EndroidQrCode($text);
         $qrCode->setSize($this->qrCodeSize);
         $qrCode->setWriterByName('png');
         $qrCode->setMargin(0);
         $qrCode->setEncoding('UTF-8');
-        $qrCode->setErrorCorrectionLevel(ErrorCorrectionLevel::MEDIUM);
+        $qrCode->setErrorCorrectionLevel(ErrorCorrectionLevel::LOW);
         $qrCode->setForegroundColor($this->color);
         $qrCode->setBackgroundColor($this->bgColor);
         $qrCode->setRoundBlockSize(true);
-        $qrCode->setValidateResult(false);    
+        $qrCode->setValidateResult(false);
 
-        // 2. ç”Ÿæˆå®¹å™¨å›¾ç‰‡
+        // 2. Éú³ÉÈİÆ÷Í¼Æ¬
         $box = imagecreate($this->boxSize, $this->boxSize) or die("Cannot Initialize new GD image stream");
         $bgColor = imagecolorallocate($box, $this->bgColor['r'], $this->bgColor['g'], $this->bgColor['b']);
         $color = imagecolorallocate($box, $this->color['r'], $this->color['g'], $this->color['b']);
 
-        // 3. æ‹·è´äºŒç»´ç 
+        // 3. ¿½±´¶şÎ¬Âë
         $response = new QrCodeResponse($qrCode);
         $stream = $response->getContent();
         $qrCodeImg = imagecreatefromstring($stream);
-        $srcX = ($this->boxSize - $this->qrCodeSize) / 2; // äºŒç»´ç æ°´å¹³å±…ä¸­
-        $srcY = $isMultiLines ? 0 : ($this->boxSize - $this->qrCodeSize) / 2 - $this->padding; // å•è¡Œæ ‡ç­¾æ—¶ï¼ŒäºŒç»´ç çºµå‘å±…ä¸­ï¼Œä¸Šç§» $this->padding å€¼
+        $srcX = ($this->boxSize - $this->qrCodeSize) / 2; // ¶şÎ¬ÂëË®Æ½¾ÓÖĞ
+        $srcY = $isMultiLines ? 0 : ($this->boxSize - $this->qrCodeSize) / 2 - $this->padding; // µ¥ĞĞ±êÇ©Ê±£¬¶şÎ¬Âë×İÏò¾ÓÖĞ£¬ÉÏÒÆ $this->padding Öµ
         imagecopyresized($box, $qrCodeImg, $srcX, $srcY, 0, 0, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize, $this->qrCodeSize);
 
-        // 4. å†™å›¾ç‰‡åº•éƒ¨çš„æ–‡å­—æè¿°
+        // 4. Ğ´Í¼Æ¬µ×²¿µÄÎÄ×ÖÃèÊö
         if (! $isMultiLines) {
             $label = [
-                'å›æ”¶ç¼–å·ï¼š' . $this->resource->recycle_number
+                $this->resource->recycle_number // »ØÊÕ±àºÅ
             ];
         } else {
             $label = [
-                'åºŸå¼ƒèµ„æºäºŒç»´ç æ ‡ç­¾',
-                'ç±»åˆ«ï¼š' . $this->resource->category->display_name,
-                'åç§°ï¼š' . $this->resource->product_name,
-                'ç¼–å·ï¼š' . $this->resource->recycle_number,
-                'ç¼–å·æˆæƒï¼š' . $this->resource->number_auth 
+                '·ÏÆú×ÊÔ´¶şÎ¬Âë±êÇ©',
+                'Àà±ğ£º' . $this->resource->category->display_name,
+                'Ãû³Æ£º' . $this->resource->product_name,
+                '±àºÅ£º' . $this->resource->recycle_number,
+                '±àºÅÊÚÈ¨£º' . $this->resource->number_auth 
             ];
         }
         
@@ -96,20 +94,20 @@ EOD;
             $x = $this->padding;
         } else {
             $lineWidth = imagefontwidth($this->fontSize) * mb_strlen($label[0], 'UTF-8');
-            $x = ($this->boxSize - $lineWidth) / 2;
+            $x = ($this->boxSize - $lineWidth) / 2 - $this->padding / 2;
         }
-        $y = $srcY + $this->qrCodeSize + $this->padding;
-        foreach ($label as $line) { // å¾ªç¯å†™è¡Œ
+        $y = $srcY + $this->qrCodeSize + $this->padding * 2;
+        foreach ($label as $line) { // Ñ­»·Ğ´ĞĞ
             imagettftext($box, $this->fontSize, 0, $x, $y, $color, $this->font, $line);
             $y += $this->fontSize * $this->lineHeight;
         }
 
-        // 5. å‘æµè§ˆå™¨è¾“å‡ºæœ€ç»ˆçš„äºŒç»´ç 
+        // 5. Ïòä¯ÀÀÆ÷Êä³ö×îÖÕµÄ¶şÎ¬Âë
         header("Content-type: image/png");
         ob_end_clean();
         imagepng($box);
 
-        // 6. é”€æ¯å›¾ç‰‡èµ„æº
+        // 6. Ïú»ÙÍ¼Æ¬×ÊÔ´
         imagedestroy($qrCodeImg);
         imagedestroy($box);
     }
